@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>Posts | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Eureka is a elegant and powerful theme for Hugo.">
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[{
+            "@type":"ListItem",
+            "position":  1 ,
+            "name": "设置您的PyCharm",
+            "description": "使用PyCharm时常用的设置事项。\n一、改变pycharm terminal的字体 file-\u0026gt;settings-\u0026gt;Editor-\u0026gt;General-\u0026gt;Console里面的console commands history size\n二、通过默认模板新建文件: File-\u0026gt;settings-\u0026gt;Editor-\u0026gt;File and Code Templates-\u0026gt;Python Script\n三、修改pycharm默认编码器： File-\u0026gt;Setting-\u0026gt;Editor-\u0026gt;File Encodeings\n为减少出现乱码的可能性，最好把Global Encoding、Project Encoding、Default encoding for properties files全部改成UTF-8。\n注意： 刚安装pycharm后，Project Encoding、Default encoding for properties files默认是GBK。",
+            "url": "/posts/%E8%AE%BE%E7%BD%AE%E6%82%A8%E7%9A%84pycharm/"
+        },{
+            "@type":"ListItem",
+            "position":  2 ,
+            "name": "Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别",
+            "description": "大部分Python文件的第一行写着#!/usr/bin/env python或者#!/usr/bin/python，这两条语句和运行模式有关。\n如果我们用普通运行模式例如（在Linux下执行命令）：\npython *.py  那么这两条头部语句没什么卵用。但如果打算让Python程序像普通程序一样运行，例如执行命令（注：文件要有可执行权限chmod a+x *.py）：\n./*.py  这两条头部语句就起作用了，它们用来为脚本语言指定解释器，通常认为用#!/usr/bin/env python要比#!/usr/bin/python更好，因为Python解释器有时并不安装在默认路径，比如安装在虚拟环境中。\n两条语句逐一解释如下：\n#!/usr/bin/env python  当机器上安装了多个版本的Python时这种写法才有意义。程序运行时机器会先去取环境变量的PATH中指定的第一个Python来执行您的脚本。如果您配置了虚拟环境，这条头部语句可以保证脚本由您的虚拟环境python中的Python来执行。\n#!/usr/bin/python  表示写死了就是要用目录/usr/bin/python下的Python来执行您的脚本。这样写程序的可移植性比较差，如果此路径下的Python不存在就会报错。\n因此一般情况下采用第一种写法。",
+            "url": "/posts/python%E5%A4%B4%E9%83%A8-usr-bin-python-%E5%92%8C-usr-bin-env-%E7%9A%84%E5%8C%BA%E5%88%AB/"
+        },{
+            "@type":"ListItem",
+            "position":  3 ,
+            "name": "Markdown小技巧（一）",
+            "description": "\u003cp\u003e关键词：上标下标\u003c/p\u003e",
+            "url": "/posts/markdown%E5%B0%8F%E6%8A%80%E5%B7%A7%E4%B8%80/"
+        }
+    ]
+}
+</script><meta property="og:title" content="Posts | Eighthoursleep" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="og:updated_time" content="2021-07-18T13:43:43&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Eighthoursleep" />
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+<article class="mx-6 my-8">
+    <h1 class="font-bold text-3xl text-primary-text">Posts</h1>
+    
+</article>
+<div class="bg-secondary-bg rounded px-6">
+    <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/%E8%AE%BE%E7%BD%AE%E6%82%A8%E7%9A%84pycharm/" class="font-bold text-xl hover:text-eureka">设置您的PyCharm</a>
+</div>
+<div class="content">
+  使用PyCharm时常用的设置事项。
+一、改变pycharm terminal的字体 file-&gt;settings-&gt;Editor-&gt;General-&gt;Console里面的console commands history size
+二、通过默认模板新建文件: File-&gt;settings-&gt;Editor-&gt;File and Code Templates-&gt;Python Script
+三、修改pycharm默认编码器： File-&gt;Setting-&gt;Editor-&gt;File Encodeings
+为减少出现乱码的可能性，最好把Global Encoding、Project Encoding、Default encoding for properties files全部改成UTF-8。
+注意： 刚安装pycharm后，Project Encoding、Default encoding for properties files默认是GBK。
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-19</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/python%E5%A4%B4%E9%83%A8-usr-bin-python-%E5%92%8C-usr-bin-env-%E7%9A%84%E5%8C%BA%E5%88%AB/" class="font-bold text-xl hover:text-eureka">Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别</a>
+</div>
+<div class="content">
+  大部分Python文件的第一行写着#!/usr/bin/env python或者#!/usr/bin/python，这两条语句和运行模式有关。
+如果我们用普通运行模式例如（在Linux下执行命令）：
+python *.py  那么这两条头部语句没什么卵用。但如果打算让Python程序像普通程序一样运行，例如执行命令（注：文件要有可执行权限chmod a&#43;x *.py）：
+./*.py  这两条头部语句就起作用了，它们用来为脚本语言指定解释器，通常认为用#!/usr/bin/env python要比#!/usr/bin/python更好，因为Python解释器有时并不安装在默认路径，比如安装在虚拟环境中。
+两条语句逐一解释如下：
+#!/usr/bin/env python  当机器上安装了多个版本的Python时这种写法才有意义。程序运行时机器会先去取环境变量的PATH中指定的第一个Python来执行您的脚本。如果您配置了虚拟环境，这条头部语句可以保证脚本由您的虚拟环境python中的Python来执行。
+#!/usr/bin/python  表示写死了就是要用目录/usr/bin/python下的Python来执行您的脚本。这样写程序的可移植性比较差，如果此路径下的Python不存在就会报错。
+因此一般情况下采用第一种写法。
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-19</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/markdown%E5%B0%8F%E6%8A%80%E5%B7%A7%E4%B8%80/" class="font-bold text-xl hover:text-eureka">Markdown小技巧（一）</a>
+</div>
+<div class="content">
+  关键词：上标下标
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-02-13</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+</div>
+
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/40/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/38/" aria-label="Page 38" class="page-link" role="button">38</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/39/" aria-label="Page 39" class="page-link" role="button">39</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/40/" aria-label="Page 40" class="page-link" role="button">40</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 41" class="page-link" role="button">41</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/42/" aria-label="Page 42" class="page-link" role="button">42</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/42/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/42/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

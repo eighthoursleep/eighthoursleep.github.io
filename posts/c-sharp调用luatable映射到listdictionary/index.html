@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>C#调用Lua：table映射到List、Dictionary、类 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="table映射到List、Dictionary、类">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"C#调用Lua：table映射到List、Dictionary、类",
+      "item":"/posts/c-sharp%E8%B0%83%E7%94%A8luatable%E6%98%A0%E5%B0%84%E5%88%B0listdictionary/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/c-sharp%E8%B0%83%E7%94%A8luatable%E6%98%A0%E5%B0%84%E5%88%B0listdictionary/"
+    },
+    "headline": "C#调用Lua：table映射到List、Dictionary、类 | Eighthoursleep","datePublished": "2020-07-08T09:00:46+00:00",
+    "dateModified": "2020-07-08T09:00:46+00:00",
+    "wordCount":  324 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "\u003cp\u003etable映射到List、Dictionary、类\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="C#调用Lua：table映射到List、Dictionary、类 | Eighthoursleep" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/c-sharp%E8%B0%83%E7%94%A8luatable%E6%98%A0%E5%B0%84%E5%88%B0listdictionary/" />
+
+
+
+
+<meta property="og:description" content="table映射到List、Dictionary、类" />
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-07-08T09:00:46&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-07-08T09:00:46&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="C Sharp" />
+
+<meta property="article:tag" content="Lua" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96/" />
+
+<meta property="og:see_also" content="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E8%A7%A3%E6%9E%90lua%E8%84%9A%E6%9C%AC/" />
+
+<meta property="og:see_also" content="/posts/xlua%E7%83%AD%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" />
+
+<meta property="og:see_also" content="/posts/lua%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" />
+
+<meta property="og:see_also" content="/posts/lua%E8%87%AA%E5%B8%A6%E5%BA%93/" />
+
+<meta property="og:see_also" content="/posts/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" />
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">C#调用Lua：table映射到List、Dictionary、类</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-07-08</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>2 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/xlua/" class="hover:text-eureka">xLua</a>
+        
+    </div>
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <p>table映射到List、Dictionary、类</p>
+<h1 id="table映射到listdictionary">table映射到List、Dictionary</h1>
+<ul>
+<li>
+<p>没有自定义索引的表映射到List，自定义索引的表映射到Dictionary。</p>
+</li>
+<li>
+<p>数据类型不确定就用object类型接收。</p>
+</li>
+<li>
+<p>只拷贝值，不拷贝引用。</p>
+</li>
+</ul>
+<pre><code class="language-lua">-- 映射到List
+mixList = {&quot;123&quot;,&quot;456&quot;,true,955,10000}
+
+-- 映射到Dictionary
+mixDict = {
+	[3] = 23333,
+	[true] = 3.4,
+	[false] = &quot;R U OK ?&quot;,
+	[&quot;ok&quot;] = true,
+}
+</code></pre>
+<p>在Assets/Scripts/CSharpCallLua下编写脚本并运行</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ListAndDictionary : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        LuaMgr.GetInstance().Init();
+        LuaMgr.GetInstance().DoLuaFile(&quot;Main&quot;);
+
+        List&lt;object&gt; mixList = LuaMgr.GetInstance().Global.Get&lt;List&lt;object&gt;&gt;(&quot;mixList&quot;);
+        string str = null;
+        foreach (object obj in mixList)
+        {
+            str += obj + &quot; - &quot;;
+        }
+        Debug.Log(str);
+
+        Dictionary&lt;object, object&gt; mixDict = LuaMgr.GetInstance().Global.Get&lt;Dictionary&lt;object, object&gt;&gt;(&quot;mixDict&quot;);
+        str = null;
+        foreach (object key in mixDict.Keys)
+        {
+            str += mixDict[key] + &quot; - &quot;;
+        }
+        Debug.Log(str);
+        foreach (KeyValuePair&lt;object, object&gt; item in mixDict)
+        {
+            Debug.Log(item.Key + &quot; --- &quot; + item.Value);
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>LUA: Main Lua File Starts.</p>
+<p>123 - 456 - True - 955 - 10000 -</p>
+<p>R U OK ? - 3.4 - True - 23333 -</p>
+<p>False &mdash; R U OK ?</p>
+<p>True &mdash; 3.4</p>
+<p>ok &mdash; True</p>
+<p>3 &mdash; 23333</p>
+</blockquote>
+<h1 id="table映射到类">table映射到类</h1>
+<ul>
+<li>
+<p>声明一个自定义类，其中成员变量命名要和Lua中表的自定义索引一致，可少可多，无非是忽略。</p>
+</li>
+<li>
+<p>只拷贝值，不会改变Lua脚本中的表</p>
+</li>
+<li>
+<p>支持嵌套</p>
+</li>
+</ul>
+<pre><code class="language-lua">testClass = {
+	testInt = 2,
+	testBool = true,
+	testFloat = 1.89,
+	testString = &quot;R U OK ?&quot;,
+	testFun = function()
+		print(&quot;boy ♂ next ♂ door&quot;)
+	end,
+	testInClass = {
+		testInt = 3
+	}
+}
+</code></pre>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class AccessClass : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        LuaMgr.GetInstance().Init();
+        LuaMgr.GetInstance().DoLuaFile(&quot;Main&quot;);
+
+        AccessLuaClass obj = LuaMgr.GetInstance().Global.Get&lt;AccessLuaClass&gt;(&quot;testClass&quot;);
+        Debug.Log(obj.testInt
+            + &quot; - &quot; + obj.testBool
+            + &quot; - &quot; + obj.testFloat
+            + &quot; - &quot; + obj.testString);
+        Debug.Log(&quot;嵌套：&quot; + obj.testInClass.testInt);
+        obj.testFun();
+    }
+}
+
+public class AccessInClass
+{
+    public int testInt;
+}
+
+public class AccessLuaClass
+{
+    //在类中声明成员变量，名字要和Lua脚本里的一致
+    //类型是公共的，因为私有和保护没法赋值
+    //如果变量比Lua脚本中的少，就忽略
+    //如果变量比Lua脚本中的多，不会赋值也不会忽略
+    public int testInt;
+    public bool testBool;
+    public float testFloat;
+    public string testString;
+    public UnityAction testFun;
+    public void Test()
+    {
+    }
+    public int i;
+    public AccessInClass testInClass;
+}
+</code></pre>
+<blockquote>
+<p>LUA: Main Lua File Starts.</p>
+<p>2 - True - 1.89 - R U OK ?</p>
+<p>嵌套：3</p>
+<p>LUA: boy ♂ next ♂ door</p>
+</blockquote>
+        </div>
+        
+        <div class="my-4">
+    
+    <a href="/tags/c-sharp/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#C Sharp</a>
+    
+    <a href="/tags/lua/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#Lua</a>
+    
+</div>
+        
+        
+        
+
+
+        
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/c-sharp%E8%B0%83%E7%94%A8luatable%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3luatable/" class="block">C#调用Lua：table映射到接口、LuaTable</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96/" class="block">C#调用Lua：全局变量和全局函数的获取</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+
+    
+    
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded p-6">
+        <h2 class="text-lg font-semibold mb-4">See Also</h2>
+        <div class="content">
+            
+            <a href="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96/">C#调用Lua：全局变量和全局函数的获取</a>
+            <br />
+            
+            <a href="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E8%A7%A3%E6%9E%90lua%E8%84%9A%E6%9C%AC/">C#调用Lua：解析Lua脚本</a>
+            <br />
+            
+            <a href="/posts/xlua%E7%83%AD%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">xLua热更新解决方案</a>
+            <br />
+            
+            <a href="/posts/lua%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">Lua垃圾回收</a>
+            <br />
+            
+            <a href="/posts/lua%E8%87%AA%E5%B8%A6%E5%BA%93/">Lua自带库函数</a>
+            <br />
+            
+            <a href="/posts/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Lua面向对象</a>
+            <br />
+            
+        </div>
+    </div>
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

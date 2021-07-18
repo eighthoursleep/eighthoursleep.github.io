@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>C#委托与事件 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="关键词：委托、事件、Lambda公式">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"C#委托与事件",
+      "item":"/posts/c-sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/c-sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/"
+    },
+    "headline": "C#委托与事件 | Eighthoursleep","datePublished": "2020-04-04T09:49:00+00:00",
+    "dateModified": "2020-04-04T09:49:00+00:00",
+    "wordCount":  1977 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "\u003cp\u003e关键词：委托、事件、Lambda公式\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="C#委托与事件 | Eighthoursleep" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/c-sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/" />
+
+
+
+
+<meta property="og:description" content="关键词：委托、事件、Lambda公式" />
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-04-04T09:49:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-04-04T09:49:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2  lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">C#委托与事件</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-04-04</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>10 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <p>关键词：委托、事件、Lambda公式</p>
+<h1 id="一委托">一、委托</h1>
+<blockquote>
+<p>委托就是方法的管理器、调度器。</p>
+<p>委托把方法当参数传递和调度。</p>
+</blockquote>
+<h2 id="delegate">Delegate</h2>
+<p>“ 委托的老大——Delegate类。”</p>
+<p>C#的Delegate类似C的指针，不同的是C的指针既可以指方法又可以指变量，而且可以进行类型转换。</p>
+<p>C的指针实际上是内存地址变量它既可以直接操作内存，又可以通过内存地址直接访问变量，直接调用方法。</p>
+<p>C#的Delegate是强类型，在委托声明时，就已经指定了该变量只能指向具有特定参数和返回值的方法。</p>
+<p>使用Delegate可以直接建立任何名称的委托类型，当进行系统编译时，系统将自动生成此类型</p>
+<p>我们可以使用“ delegate void delegateName() ”的格式建立一个委托类。</p>
+<p>在建立委托对象时，委托的参数类型必须与委托方法相对应。只要往委托对象的构造函数输入方法名，委托就会直接绑定此方法。</p>
+<p>使用&quot; DelegateName.Invoke(stringMessage); &ldquo;可以显式调用委托的方法。实际操作中，我们无须使用Invoke方法，直接使用“ DelegateName(); ”即可。</p>
+<p>使用反编译指令ILDASM.exe可以观察其成员。由ILDASM.exe中可以看到，它继承了System.MulticastDelegate类，并自动生成BeginInvole、EndInvoke、Invoke等三种常用方法。</p>
+<p>Invoke方法用于同步调用委托对象的对应方法，BeginInvoke、EndInvoke用于以异步的方式调用对应方法。</p>
+<p>MulticastDelegate是System.Delegate的子类，是一个特殊类，编译器和其他工具可以从此类派生，但自定义类不能显式地从此类进行派生。它支持多路广播委托，并拥有一个带有链接的委托列表，在调用多路广播委托时，系统将按照调用列表中的委托出现顺序来同步调用这些委托。</p>
+<p>MulticastDelegate具有两个常用属性：Method、Target。其中Method用于获取委托所表示的方法Target用于获取当前调用的类实例。</p>
+<h2 id="例1无返回值的委托技能激活">例1（无返回值的委托，技能激活）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectDelegate
+{
+    delegate void Skills();//声明一个委托，返回类型和要绑定的方法返回类型一致
+
+    class Program
+    {      
+        static void Main(string[] args)
+        {
+            Skills skills = new Skills(MeleeSkill01);
+            //委托是一个类，现在实例化一个委托Skills，一定要传入一个方法名
+            //也可以直接写成：Skills skills = MeleeSkill01;
+            skills += MeleeSkill03;//再绑定一个方法
+            skills += MeleeSkill02;
+
+            RangeSkill rangeSkill = new RangeSkill();
+            skills += rangeSkill.RangeSkill02;
+            skills += rangeSkill.RangeSkill01;
+
+            Console.WriteLine(&quot;------Round 1------&quot;);
+            skills.Invoke();//同步调用委托对象skills的方法
+
+            Console.WriteLine(&quot;\n------Round 2------&quot;);
+            skills -= MeleeSkill01;//从委托中去掉指定的方法
+            skills -= rangeSkill.RangeSkill01;
+            skills += rangeSkill.RangeSkill03;
+            skills.Invoke();//也可以直接写成：skills();
+        }
+
+        public static void MeleeSkill01()
+        {
+            Console.WriteLine(&quot;Meleeskill 01 is activated !&quot;);
+        }
+
+        public static void MeleeSkill02()
+        {
+            Console.WriteLine(&quot;Meleeskill 02 is activated !&quot;);
+        }
+
+        public static void MeleeSkill03()
+        {
+            Console.WriteLine(&quot;Meleeskill 03 is activated !&quot;);
+        }
+
+    }
+    
+    class RangeSkill
+    {
+        public void RangeSkill01()
+        {
+            Console.WriteLine(&quot;RangeSkill 01 is activated !&quot;);
+        }
+
+        public void RangeSkill02()
+        {
+            Console.WriteLine(&quot;RangeSkill 02 is activated !&quot;);
+        }
+
+        public void RangeSkill03()
+        {
+            Console.WriteLine(&quot;RangeSkill 03 is activated !&quot;);
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200625225950962.png" alt="image-20200625225950962"></p>
+<h2 id="例2无返回值的委托任务逻辑">例2（无返回值的委托，任务逻辑）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectDelegate
+{
+    delegate void Quests(Player player);
+
+    class Program
+    {        
+        static void Main(string[] args)
+        {
+            Player player = new Player(100);
+
+            Quests quests = Quest01;
+            quests += Quest02;
+            quests += Quest03;
+
+            Console.WriteLine(&quot;Player stamina : 100\n&quot;);
+            quests(player);
+        }
+
+        public static void Quest01(Player player)
+        {
+            if (player.Stamina &gt; 0)
+            {
+                Console.WriteLine(&quot;Quest01 Begin !&quot;);
+
+                player.Stamina = player.Stamina - 10;
+                Console.WriteLine(&quot;Stamina -10 !&quot;);
+
+                Console.WriteLine(&quot;Quest01 Complete !&quot;);
+                Console.WriteLine(&quot;Player stamina : &quot; + player.Stamina + &quot;\n&quot;);
+            }                
+            else
+            {
+                Console.WriteLine(&quot;Quest01 fail !&quot;);
+            }
+        }
+
+        public static void Quest02(Player player)
+        {
+            if (player.Stamina &gt; 0)
+            {
+                Console.WriteLine(&quot;Quest02 Begin !&quot;);
+
+                player.Stamina = player.Stamina - 20;
+                Console.WriteLine(&quot;Stamina -20 !&quot;);
+
+                Console.WriteLine(&quot;Quest02 Complete !&quot;);
+                Console.WriteLine(&quot;Stamina : &quot; + player.Stamina + &quot;\n&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Quest02 fail !&quot;);
+            }
+        }
+
+        public static void Quest03(Player player)
+        {
+            if (player.Stamina &gt; 0)
+            {
+                Console.WriteLine(&quot;Quest03 Begin !&quot;);
+
+                player.Stamina = player.Stamina - 30;
+                Console.WriteLine(&quot;Stamina -30 !&quot;);
+
+                Console.WriteLine(&quot;Quest03 Complete !&quot;);
+                Console.WriteLine(&quot;Player stamina : &quot; + player.Stamina + &quot;\n&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Quest03 fail !&quot;);
+            }
+        }
+    }
+    
+    class Player
+    {
+        float stamina;
+        //构造
+        public Player(float stamina)
+        {
+            this.stamina = stamina;
+        }
+        //封装
+        public float Stamina
+        {
+            get
+            {
+                return stamina;
+            }
+            set
+            {
+                stamina = value;
+            }
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626003706760.png" alt="image-20200626003706760"></p>
+<h2 id="例3有返回值的委托">例3（有返回值的委托）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectDelegate
+{
+    delegate string Steps();
+    
+    class Program
+    {        
+        static void Main(string[] args)
+        {
+            Steps steps = Step01;
+            steps += Step02;
+            steps += Step03;
+            Console.WriteLine(&quot;------Round 1------&quot;);
+            Console.WriteLine(&quot;The return value of steps() is &quot; + steps());
+            
+            steps += Step02;
+            steps -= Step01;
+            Console.WriteLine(&quot;\n------Round 2------&quot;);
+            Console.WriteLine(&quot;The return value of steps() is &quot; + steps());
+        }
+        
+        public static string Step01()
+        {
+            Console.WriteLine(&quot;Step01&quot;);
+            return &quot;Step01&quot;;
+        }
+
+        public static string Step02()
+        {
+            Console.WriteLine(&quot;Step02&quot;);
+            return &quot;Step02&quot;;
+        }
+
+        public static string Step03()
+        {
+            Console.WriteLine(&quot;Step03&quot;);
+            return &quot;Step03&quot;;
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200625235114816.png" alt="image-20200625235114816"></p>
+<h2 id="例4多路委托">例4（多路委托）</h2>
+<p>例1、例2、例3均使用多路委托。</p>
+<p>多路委托：一个委托绑定并调用了多个方法。</p>
+<h2 id="例5泛型委托任务逻辑">例5（泛型委托，任务逻辑）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectDelegate
+{
+    delegate void Quests&lt;T&gt;(T t);//使用泛型来声明委托
+
+    class Program
+    {        
+        static void Main(string[] args)
+        {
+            Warrior warrior = new Warrior(100);
+            Mage mage = new Mage(200);
+
+            Quests&lt;Warrior&gt; questsW = Quest01;
+            questsW += Quest02;
+
+            Quests&lt;Mage&gt; questsM = Quest03;
+            questsM += Quest04;
+
+            questsW(warrior);
+            questsM(mage);
+        }
+
+        public static void Quest01(Warrior warrior)
+        {
+            if (warrior.Stamina &gt; 0)
+            {
+                Console.WriteLine(&quot;Warrior has completed Quest01 !&quot;);
+                warrior.Stamina = warrior.Stamina - 100;
+            }                
+            else
+            {
+                Console.WriteLine(&quot;Quest01 fail !&quot;);
+            }
+        }
+
+        public static void Quest02(Warrior warrior)
+        {
+            if (warrior.Stamina &gt; 0)
+            {
+                Console.WriteLine(&quot;Warrior has completed Quest02 !&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Quest02 fail !&quot;);
+            }
+        }
+
+        public static void Quest03(Mage mage)
+        {
+            if (mage.Mana &gt; 0)
+            {
+                Console.WriteLine(&quot;Mage has completed Quest03 !&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Quest03 fail !&quot;);
+            }
+        }
+
+        public static void Quest04(Mage mage)
+        {
+            if (mage.Mana &gt; 0)
+            {
+                Console.WriteLine(&quot;Mage has completed Quest04 !&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Quest04 fail !&quot;);
+            }
+        }
+    }
+    
+    class Warrior
+    {
+        float stamina;
+        //构造
+        public Warrior(float stamina)
+        {
+            this.stamina = stamina;
+        }
+        //封装
+        public float Stamina
+        {
+            get
+            {
+                return stamina;
+            }
+            set
+            {
+                stamina = value;
+            }
+        }
+    }
+
+    class Mage
+    {
+        float mana;
+        //构造
+        public Mage(float mana)
+        {
+            this.mana = mana;
+        }
+        //封装
+        public float Mana
+        {
+            get
+            {
+                return mana;
+            }
+            set
+            {
+                mana = value;
+            }
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626010801791.png" alt="image-20200626010801791"></p>
+<h1 id="二事件">二、事件</h1>
+<p>事件是一种特殊的委托，它为委托提供了封装性，即：</p>
+<ol>
+<li>
+<p>允许从类的外部增加、删除方法；</p>
+</li>
+<li>
+<p>不允许从类的外部来调用委托绑定的方法。</p>
+</li>
+</ol>
+<p>事件为委托对象隐式地建立起<strong>add MethodName()</strong>、<strong>remote MethodName()<strong>两个方法，用作</strong>注册</strong>与<strong>注销</strong>事件的处理方法。而且事件对应的<strong>成员变量</strong>将会被视为<strong>private变量</strong>，外界无法越过事件所在对象直接访问它们。</p>
+<p>观察事件的编译过程可知，在编译时，系统为事件自动建立add EventName()、remote EventName()方法。</p>
+<p>事件通过“+=”、“-=”两种方式注册或注销方法，使用“+=”或“-=”操作符时，系统自动调用对应的add MethodName()、remote MethodName()进行处理。</p>
+<h2 id="event关键字">event关键字</h2>
+<p>使用格式：</p>
+<pre><code class="language-c#">public delegate Type DelegateName()
+public event DelegateName EventName;
+</code></pre>
+<h2 id="例1连锁反应">例1（连锁反应）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectEvent
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Guy guy = new Guy();
+            Cat cat = new Cat();
+            Dog dog = new Dog();
+            Home home = new Home(guy, cat, dog);
+
+            home.alarm += cat.Attack;//不能写home.alarm = cat.Attack;只能 &quot;+=&quot; 或 &quot;-=&quot;。
+            home.alarm += dog.Attack;
+            home.alarm += guy.Awake;
+            home.Life(&quot;peace&quot;);//不触发alarm。
+            Console.WriteLine(&quot;------------&quot;);
+            home.Life(&quot;thief enter.&quot;);//触发alarm。
+            //无法直接使用home.alarm();
+        }
+    }
+    class Guy
+    {
+        public void Sleep()
+        {
+            Console.WriteLine(&quot;This Guy is sleeping.&quot;);
+        }
+
+        public void Awake()
+        {
+            Console.WriteLine(&quot;This Guy is Awaked.&quot;);
+        }
+    }
+
+    class Cat
+    {
+        public void Sunbath()
+        {
+            Console.WriteLine(&quot;The cat is sunbathing.&quot;);
+        }
+        public void Attack()
+        {
+            Console.WriteLine(&quot;The cat attacks.&quot;);
+        }
+    }
+
+    class Dog
+    {
+        public void Play()
+        {
+            Console.WriteLine(&quot;The dog is catching a rat.&quot;);
+        }
+
+        public void Attack()
+        {
+            Console.WriteLine(&quot;The dog barks.&quot;);
+        }
+    }
+
+    delegate void Alarm();//声明委托
+
+    class Home
+    {
+        Guy guy;
+        Cat cat;
+        Dog dog;
+        public event Alarm alarm;//声明事件
+
+        public void Life(string action)
+        {
+            if (action == &quot;peace&quot;)
+            {
+                guy.Sleep();
+                cat.Sunbath();
+                dog.Play();
+            }
+            else
+            {
+                if(alarm != null)
+                {
+                    alarm();
+                }
+            }
+
+        }
+        //构造
+        public Home(Guy guy, Cat cat, Dog dog)
+        {
+            this.guy = guy;
+            this.cat = cat;
+            this.dog = dog;
+        }
+        //封装
+        internal Guy Guy { get =&gt; guy; set =&gt; guy = value; }
+        internal Cat Cat { get =&gt; cat; set =&gt; cat = value; }
+        internal Dog Dog { get =&gt; dog; set =&gt; dog = value; }
+    }
+}
+</code></pre>
+<p><img src="image-20200626015729499.png" alt="image-20200626015729499"></p>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>
+<p>在例1中，Home类的Life方法的事件alarm如果绑定方法不为空，即可使用alarm(string)来引发事件，但在外部的Main方法中直接使用home.Life(string)引发事件，将导致系统发出错误报告。</p>
+</li>
+<li>
+<p>在事件所处的对象之外，事件只能出现在+=、-=的左边。</p>
+</li>
+</ol>
+<h2 id="例2交通信号">例2（交通信号）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ProjectEvent
+{
+    delegate void Notify(bool IsPass);//声明一个委托
+    interface NotifyPass //声明一个接口
+    {
+        event Notify notify;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            TestTrafficLight();
+        }
+
+        public static void TestTrafficLight()
+        {
+            TranfficSignal signal = new TranfficSignal();
+            Bus bus = new Bus();
+            People people = new People();
+            signal.notify += bus.Movement;
+            signal.notify += people.Movement;
+            while(true) signal.Wait();
+            
+        }
+    }
+    class TranfficSignal : NotifyPass
+    {
+        public event Notify notify;//声明一个事件
+        bool IsPass = false;
+        public void Wait()
+        {
+            for(int i=10; i &gt;= 0; i--)
+            {
+                Thread.Sleep(1000);//线程休眠一秒
+                Console.WriteLine(i);
+            }
+            IsPass = !IsPass;
+            notify(IsPass);
+        }
+    }
+    class Bus
+    {
+        public void Movement(bool IsPass)
+        {
+            Console.WriteLine(IsPass?&quot;Bus go !&quot;:&quot;Bus await.&quot;);
+        }
+    }
+    class People
+    {
+        public void Movement(bool IsPass)
+        {
+            Console.WriteLine(IsPass?&quot;People go !&quot;:&quot;People await.&quot;);
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626104053613.png" alt="image-20200626104053613"></p>
+<h2 id="匿名方法绑定事件">匿名方法绑定事件</h2>
+<h2 id="例1交通信号">例1（交通信号）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ProjectEvent
+{
+    delegate void Notify(bool IsPass);
+    interface NotifyPass //声明一个接口
+    {
+        event Notify notify;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            TestTrafficLight();
+        }
+        public static void TestTrafficLight()
+        {
+            TranfficSignal signal = new TranfficSignal();
+           
+            signal.notify += delegate (bool pass)
+            {
+                Console.WriteLine(pass ? &quot;Bus go !&quot; : &quot;Bus await&quot;);
+            };
+            signal.notify += delegate (bool pass)
+            {
+                Console.WriteLine(pass ? &quot;People go !&quot; : &quot;People await&quot;);
+            };
+            signal.notify += delegate (bool pass)
+            {
+                Console.WriteLine(pass ? &quot;Carriage go !&quot; : &quot;Carriage await&quot;);
+            };
+            while (true) signal.Wait();
+        }
+    }
+    class TranfficSignal : NotifyPass
+    {
+        public event Notify notify;
+        bool IsPass = false;
+        public void Wait()
+        {
+            for(int i=10; i &gt;= 0; i--)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(i);
+            }
+            IsPass = !IsPass;
+            notify(IsPass);
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626105126020.png" alt="image-20200626105126020"></p>
+<h1 id="三lambda">三、Lambda</h1>
+<p>在Framework 2.0以前，声明委托的唯一方法时通过方法命名，从Framework 2.0起，系统开始支持匿名方法。</p>
+<p>通过匿名方法，可以直接把一段代码绑定给事件，减少了实例化委托所需的编码系统开销。</p>
+<p>从Framework 3.0起，Lambda表达式逐渐取代匿名方法，作为编写内联代码的首选方式。</p>
+<p>总体来说，Lambda表达式使用更简单的方式编写匿名方法，彻底简化委托的使用方式。</p>
+<h2 id="例1交通信号-1">例1（交通信号）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ProjectEvent
+{
+    delegate void Notify(bool IsPass);
+    interface NotifyPass //声明一个接口
+    {
+        event Notify notify;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            TestTrafficLight();
+        }
+        public static void TestTrafficLight()
+        {
+            TranfficSignal signal = new TranfficSignal();
+           
+            signal.notify += (p) =&gt; 
+            {
+                Console.WriteLine(p ? &quot;Bus go !&quot; : &quot;Bus await&quot;);
+            };
+            signal.notify += (p) =&gt; 
+            {
+                Console.WriteLine(p ? &quot;People go !&quot; : &quot;People await&quot;);
+            };
+            signal.notify += (p) =&gt;{ Console.WriteLine(&quot;Ambulance GO!!!&quot;);};
+            while (true) signal.Wait();
+        }
+    }
+    class TranfficSignal : NotifyPass
+    {
+        public event Notify notify;
+        bool IsPass = false;
+        public void Wait()
+        {
+            for(int i=10; i &gt;= 0; i--)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(i);
+            }
+            IsPass = !IsPass;
+            notify(IsPass);
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626110532165.png" alt="image-20200626110532165"></p>
+<h1 id="四类库中的委托">四、类库中的委托</h1>
+<h2 id="例1角色信息排序">例1（角色信息排序）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ProjectEvent
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ListSort();
+        }
+
+        public static void ListSort()
+        {
+            List&lt;Character&gt; list = new List&lt;Character&gt;()
+            {
+                new Character(&quot;Warrior&quot;, 100, 2000),
+                new Character(&quot;Mage&quot;, 120, 1000),
+                new Character(&quot;Ranger&quot;, 80, 1500)
+            };
+
+            list.Sort((x, y) =&gt; { return (int)(x.Health - y.Health); });
+            Console.WriteLine(&quot;\n按生命值排序: \nName\tHealth\tDaseDamage&quot;);
+            foreach(var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+            list.Sort((x, y) =&gt; { return (int)(x.BaseDamage - y.BaseDamage); });
+            Console.WriteLine(&quot;\n按攻击力排序: \nName\tHealth\tDaseDamage&quot;);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+            list.Sort((x, y) =&gt; { return x.Name.CompareTo(y.Name); });//
+            Console.WriteLine(&quot;\n按名字排序: \nName\tHealth\tDaseDamage&quot;);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+    class Character
+    {
+        string name;
+        float health;
+        float baseDamage;
+
+        public Character(string name, float health, float baseDamage)
+        {
+            this.name = name;
+            this.health = health;
+            this.baseDamage = baseDamage;
+        }
+
+        public string Name { get =&gt; name; set =&gt; name = value; }
+        public float Health { get =&gt; health; set =&gt; health = value; }
+        public float BaseDamage { get =&gt; baseDamage; set =&gt; baseDamage = value; }
+
+        public override string ToString()
+        {
+            return String.Format(&quot;{0}\t{1}\t{2}&quot;, name, health, BaseDamage);
+        }
+    }
+}
+</code></pre>
+<p><img src="image-20200626143246445.png" alt="image-20200626143246445"></p>
+<p>参考<a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=netcore-3.1#System_Collections_Generic_List_1_Sort">List&lt;T&gt;.Sort方法详情</a></p>
+<h1 id="五常用委托">五、常用委托</h1>
+<h1 id="action">Action</h1>
+<p>泛型委托Action由系统提供，无须声明。</p>
+<p>Action支持0~16个参数，可以按需求任意使用，无返回值。</p>
+<pre><code class="language-C#">Action&lt;&gt;
+
+Action&lt;T&gt;
+
+Action&lt;T1, T2&gt;
+
+...
+
+Action&lt;T1, T2, ..., T16&gt;
+</code></pre>
+<h2 id="例1交通信号-2">例1（交通信号）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ProjectAction
+{
+    interface NotifyPass //声明一个接口
+    {
+        event Action&lt;bool&gt; notify;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            TestTrafficLight();
+        }
+        public static void TestTrafficLight()
+        {
+            TranfficSignal signal = new TranfficSignal();
+            signal.notify += (p) =&gt;
+            {
+                Console.WriteLine(p ? &quot;Bus go !&quot; : &quot;Bus await&quot;);
+            };
+            signal.notify += (p) =&gt;
+            {
+                Console.WriteLine(p ? &quot;People go !&quot; : &quot;People await&quot;);
+            };
+            signal.notify += (p) =&gt; { Console.WriteLine(&quot;Ambulance GO!!!&quot;); };
+            while (true) signal.Wait();
+        }
+ 
+        class TranfficSignal : NotifyPass
+        {
+            public event Action&lt;bool&gt; notify;
+            bool IsPass = false;
+            public void Wait()
+            {
+                for (int i = 10; i &gt;= 0; i--)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine(i);
+                }
+                IsPass = !IsPass;
+                notify(IsPass);
+            }
+        }
+    }
+}
+</code></pre>
+<p>结果同：三、Lambda|例1</p>
+<h1 id="func">Func</h1>
+<p>委托Func与Action相似，同样支持0~16个参数，不同在于Func必须具备返回值。</p>
+<pre><code class="language-c#">Func&lt;TResult&gt;
+Func&lt;T, TResult&gt;
+Func&lt;T1, T2, TResult&gt;
+Func&lt;T1, T2, ..., T16, TResult&gt;
+</code></pre>
+<h2 id="例1计算实际伤害">例1（计算实际伤害）</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectFunc
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Attack(
+                new Character(&quot;Warrior1&quot;, 500, 300, 100, 2),
+                new Character(&quot;Warrior2&quot;, 600, 400, 90, 3)
+                );
+        }
+        public static void Attack(Character c1, Character c2)
+        {
+            //作为内联代码，外部无法获知
+            Func&lt;float, float, float, float&gt; damage = (b, f, a) =&gt;
+            {
+                return b * f - a;
+            };
+
+            Console.WriteLine(&quot;{0}对{1}的实际伤害：{2}&quot;,
+                  c1.Name, c2.Name, damage(c1.BaseDamage, c1.Factor, c2.Armor));
+            Console.WriteLine(&quot;{0}对{1}的实际伤害：{2}&quot;,
+                  c2.Name, c1.Name, damage(c2.BaseDamage, c2.Factor, c1.Armor));
+        }
+    }
+    class Character
+    {
+        string name;
+        float health;
+        float baseDamage;
+        float armor;
+        float factor;
+
+        public Character(string name, float health, float baseDamage, float armor, float factor)
+        {
+            this.name = name;
+            this.health = health;
+            this.baseDamage = baseDamage;
+            this.armor = armor;
+            this.factor = factor;
+        }
+
+        public string Name { get =&gt; name; set =&gt; name = value; }
+        public float Health { get =&gt; health; set =&gt; health = value; }
+        public float BaseDamage { get =&gt; baseDamage; set =&gt; baseDamage = value; }
+        public float Armor { get =&gt; armor; set =&gt; armor = value; }
+        public float Factor { get =&gt; factor; set =&gt; factor = value; }
+    }
+}
+</code></pre>
+<p><img src="image-20200626152400311.png" alt="image-20200626152400311"></p>
+<h2 id="例2">例2</h2>
+<pre><code class="language-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project_Func
+{
+    class Program
+    {
+        //Action支持绑定1~16个带参数的方法
+        //Func支持绑定1~16个带参数的方法，但这些带参数的方法都必须有返回值
+        static Func&lt;int, int, int&gt; func1;
+        static void Main(string[] args)
+        {
+            //将方法与委托进行绑定
+            //func1 = Test;
+            func1 += Test;
+            func1 += Test2;
+            //将委托调用的时候，实际就是调用绑定的方法
+            int result = func1(100, 500);//实际只返回Test2的结果
+            Console.WriteLine(&quot;结果1是：&quot; + result);
+            //取消委托的注册，实际上就是移除掉绑定的方法
+            func1 -= Test2;
+            int result2 = func1(100, 500);
+            Console.WriteLine(&quot;结果2是：&quot; + result2);
+
+            //把它当作方法的参数进行传递
+            int result3 = Test3(Test2, 100, 500);
+            Console.WriteLine(&quot;结果3是：&quot; + result3);
+        }
+
+        public static int Test(int a, int b)
+        {
+            return a + b;
+        }
+        public static int Test2(int a, int b)
+        {
+            return a * b;
+        }
+        //回调，有时候也不是很方便，这时可以换用Action
+        public static int Test3(Func&lt;int,int,int&gt; callback, int a, int b)
+        {
+            Console.WriteLine(&quot;Test3...&quot;);
+            if(callback != null)
+            {
+                return callback(a, b);
+            }
+            return 0;
+        }
+    }
+}
+</code></pre>
+<p>程序运行结果：</p>
+<p><img src="image-20200404112753056.png" alt="image-20200404112753056"></p>
+        </div>
+        
+        
+        
+
+
+        
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/ugui%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/" class="block">UGUI图形交互系统</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/c-sharp%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="block">C#文件管理</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+    <div class="col-span-2">
+        
+        
+        <div class="sticky top-16 z-10 hidden lg:block px-6 py-4  bg-primary-bg ">
+    <span class="text-lg font-semibold">On This Page</span>
+</div>
+<div class="sticky-toc hidden lg:block px-6 pb-6 ">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#delegate">Delegate</a></li>
+    <li><a href="#例1无返回值的委托技能激活">例1（无返回值的委托，技能激活）</a></li>
+    <li><a href="#例2无返回值的委托任务逻辑">例2（无返回值的委托，任务逻辑）</a></li>
+    <li><a href="#例3有返回值的委托">例3（有返回值的委托）</a></li>
+    <li><a href="#例4多路委托">例4（多路委托）</a></li>
+    <li><a href="#例5泛型委托任务逻辑">例5（泛型委托，任务逻辑）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#event关键字">event关键字</a></li>
+    <li><a href="#例1连锁反应">例1（连锁反应）</a></li>
+    <li><a href="#例2交通信号">例2（交通信号）</a></li>
+    <li><a href="#匿名方法绑定事件">匿名方法绑定事件</a></li>
+    <li><a href="#例1交通信号">例1（交通信号）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#例1交通信号-1">例1（交通信号）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#例1角色信息排序">例1（角色信息排序）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#例1交通信号-2">例1（交通信号）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#例1计算实际伤害">例1（计算实际伤害）</a></li>
+    <li><a href="#例2">例2</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
+        
+    </div>
+    
+
+    
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

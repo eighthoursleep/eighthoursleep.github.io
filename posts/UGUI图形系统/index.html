@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>UGUI图形交互系统 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Unity版本：Unity 2019.3.4f1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"UGUI图形交互系统",
+      "item":"/posts/ugui%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/ugui%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/"
+    },
+    "headline": "UGUI图形交互系统 | Eighthoursleep","datePublished": "2020-04-04T13:47:00+00:00",
+    "dateModified": "2020-04-04T13:47:00+00:00",
+    "wordCount":  388 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "\u003cp\u003eUnity版本：Unity 2019.3.4f1\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="UGUI图形交互系统 | Eighthoursleep" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/ugui%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/" />
+
+
+
+
+<meta property="og:description" content="Unity版本：Unity 2019.3.4f1" />
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-04-04T13:47:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-04-04T13:47:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">UGUI图形交互系统</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-04-04</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>2 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <p>Unity版本：Unity 2019.3.4f1</p>
+<h1 id="画布与事件系统">画布与事件系统</h1>
+<h2 id="画布用于承载所有ui元素">画布用于承载所有UI元素</h2>
+<p>在Hierarchy(层级窗口)空白处右键|UI|Canvas(画布)，创建一个画布，此时事件系统（EventSystem）也会自动被创建。</p>
+<p>我们可以选中画布，创建子项——UI元素比如图片（UI | Image）、按钮(UI | Button)。</p>
+<h2 id="画布有三种模式">画布有三种模式</h2>
+<p>选中画布，在检查器（Inspector窗口）|画布（Canvas）组件|渲染模式（Render Mode）进行设置。</p>
+<ol>
+<li>屏幕空间 - 覆盖（Scream Space - Overlay）</li>
+<li>屏幕空间 - 摄像机（Scream Space - Camera）</li>
+<li>世界空间（World Space）</li>
+</ol>
+<p>在<strong>Scream Space - Overlay</strong>模式下，<strong>所有UI元素都显示在画面最前端</strong>。</p>
+<p>如果我们在画布上放一个Image，颜色设置为黄颜色，主摄像机前放一个白色的Cube。我们无论在场景窗口里怎么放置Cube，都无法挡住画布上的黄颜色Image。</p>
+<p><img src="image-20200404205327401.png" alt="image-20200404205327401"></p>
+<p>当我们将渲染模式设置为<strong>Scream Space - Camera</strong>时，把Main Camera拖拽到Render Mode下方的Render Camera，设置Plane Distance为2。这时我们将Cube移动靠近摄像机，画布上的Image可以被Cube挡住。</p>
+<p><img src="image-20200404211200418.png" alt="image-20200404211200418"></p>
+<p><img src="image-20200404210645047.png" alt="image-20200404210645047"></p>
+<p>屏幕空间 - 摄像机模式使用较少，适用于比如说在UI前边播放3D粒子效果。</p>
+<p>当我们把渲染模式设置为World Space，画布可以随意移动和改变大小（前两个模式不可以），但只有出现在摄像机视野内才会被渲染到。适用于制作游戏中的敌人血条、立体互动广告牌等。</p>
+<p><img src="image-20200404212143185.png" alt="image-20200404212143185"></p>
+<h2 id="画布的缩放">画布的缩放</h2>
+<p>画布可以在Canvas Scaler（画布缩放器）组件下设定缩放模式以适配市面上的不同大小的手机屏幕。</p>
+<p>设置UI Sale Mode（画布缩放模式）为Scale with Screen Size（屏幕大小调整）可以设置Reference Resolution（参考分辨率）。</p>
+<h2 id="事件系统">事件系统</h2>
+<p>事件系统（EventSystem）是用于处理各个UI控件交互，如果删除事件系统，或者把画布的Graphic Raycaster组件取消勾选，播放游戏，点击画面中的按钮将毫无反应。</p>
+<h1 id="图像文本框按钮输入框的基本使用">图像、文本框、按钮、输入框的基本使用</h1>
+<p><strong>图像</strong>与<strong>文本框</strong>的主要作用是<strong>展示</strong>，<strong>按钮</strong>与<strong>输入框</strong>的主要作用是<strong>交互</strong>。</p>
+<h2 id="例子山寨英雄联盟登录界面">例子（山寨英雄联盟登录界面）</h2>
+<p>接下来我们来制作一个英雄联盟登录界面。</p>
+<p>将素材文件夹里UI文件夹拖拽导入到Unity编辑器的Assets文件夹下。</p>
+<p>设置Scene视窗为2D模式，删除Canvas下的所有物体。</p>
+<p>在Canvas下新建一个UI|Image，在其Rect Transform组件下设置Anchor Presets为strech-strech（按住Shift+Alt）。</p>
+<p>选中UI/公用下的所有素材，在Inspector里设置Texture Type为Sprite(2D and UI)，点击Apply。</p>
+<p><img src="image-20200409220746711.png" alt="image-20200409220746711"></p>
+<p>将BG01的Sprite拖拽到Image的Image组件|Source Image。</p>
+<p><img src="image-20200409221207909.png" alt="image-20200409221207909"></p>
+<p>然后用给画布新添一个Image，重命名为BG，Source Image拖入“公用”文件夹下的Logo，点击Set Native Size(设置原生大小)</p>
+<p><img src="image-20200409221505464.png" alt="image-20200409221505464"></p>
+<p>重命名为Logo，然后移动到背景左上角</p>
+<p><img src="image-20200409222853090.png" alt="image-20200409222853090"></p>
+<p>在画布下新建一个UI|Panel（面板），默认和画布大小一致，重命名为UserPanel，将BG和Logo拖拽到UserPanel子项。</p>
+<p>将“UI/用户模块”路径下所有素材设置Texture Type为Sprite(2D and UI)。</p>
+<p>在UserPanel下新建一个Image，重命名为LoginBG，Source Image拖入“UI/用户模块“文件夹下的UserBack，并设置为原生大小。</p>
+<p>在UserPanel下新建一个Image，重命名为Account，Source Image拖入“UI/用户模块“文件夹下的Account，并设置为原生大小。</p>
+<p>通过快捷键Ctrl+D复制一个Account，重命名为PWD，Source Image拖入“UI/用户模块“文件夹下的PWD，并设置为原生大小。</p>
+<p>在UserPanel下新建一个Image，重命名为Line，Source Image拖入“UI/用户模块“文件夹下的Line，并设置为原生大小。</p>
+<p>通过快捷键Ctrl+D复制一个Line，然后将两个Line分别拖入Account、PWD的子项。</p>
+<p>通过上述类似方法，给UserPanel添加按钮：WebsiteBtn、ContactsBtn、RetrievePWDBtn、LoginBtn、RegisterBtn</p>
+<p><img src="image-20200409230946776.png" alt="image-20200409230946776"></p>
+<p>给UserPanel添加UI|Text，设置文本组件如下：</p>
+<p><img src="image-20200410111607619.png" alt="image-20200410111607619"></p>
+<p>给UserPanel添加UI|InputField（文本输入框），摆放到合适位置，调整大小合适，选中其子项Placeholder和Text，在Inspector里修改字体大小（Font Size）为20。</p>
+<p>复制一个InputField，将两个InputField的Image组件|Color设为透明。修改两个文本输入框的Placeholder、Text的Text组件设置。选中密码输入的InputField，可以修改其Input Field组件的Content Type（内容类型）为Password。完成设置后，将账号输入框重命名为UserInputField，将密码输入框重命名为PWDInputField。</p>
+<p><img src="image-20200410115134419.png" alt="image-20200410115134419"></p>
+<p><img src="image-20200410115238890.png" alt="image-20200410115238890"></p>
+<p><img src="image-20200410115329852.png" alt="image-20200410115329852"></p>
+<p>为了让UI元素的摆放和美术人员给的效果图一致，我们可以采用如下方法改进：</p>
+<p>给UserPanel的Image组件|Source Image拖入“用户模块”图片，点击Color，设置alpha值为最大（设置不透明度为最大），然后将BG取消勾选。此时我们发现原来的UI元素摆放位置和效果图有明显差距，将UI元素对应摆放到对应的位置将其覆盖即可。</p>
+<p>完成后将UserPanel的图片设置为透明，勾选BG。</p>
+<h1 id="图像文本框按钮输入框的脚本交互">图像、文本框、按钮、输入框的脚本交互</h1>
+<p>在Assets文件夹下创建文件夹Scripts用于存放脚本文件。</p>
+<p>创建C#脚本UserPanel.cs，将UserPanel.cs作为组件添加到UserPanel。</p>
+<pre><code class="language-c#">using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UserPanel : MonoBehaviour
+{
+    public Sprite bg;
+    InputField userInput;
+    InputField pwdInput;
+    Button logonBtn;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //修改图片的精灵
+        transform.Find(&quot;BG&quot;).GetComponent&lt;Image&gt;().sprite = bg;
+        //初始化
+        userInput = transform.Find(&quot;UserInputField&quot;).GetComponent&lt;InputField&gt;();
+        pwdInput = transform.Find(&quot;PWDInputField&quot;).GetComponent&lt;InputField&gt;();
+        logonBtn = transform.Find(&quot;LogonBtn&quot;).GetComponent&lt;Button&gt;();
+        //没有参数的方法
+        //绑定事件
+        logonBtn.onClick.AddListener(loginBtnOnClick);
+        transform.Find(&quot;WebsiteBtn&quot;).GetComponent&lt;Button&gt;()
+            .onClick.AddListener(WebsiteBtnOnClick);
+    }
+
+    private void WebsiteBtnOnClick()
+    {
+        Application.OpenURL(&quot;https://lol.qq.com/main.shtml&quot;);
+    }
+
+    private void loginBtnOnClick()
+    {
+        string account = userInput.text;
+        string pwd = pwdInput.text;
+        Debug.Log(&quot;账号是：&quot; + account);
+        Debug.Log(&quot;密码是：&quot; + pwd);
+    }
+}
+</code></pre>
+<p>将“UI/公共”路径下的BG02放入UserPanel的UserPanel脚本组件|bg中，播放游戏，可以看到游戏一启动我们的背景图换成了BG02，在账号输入框和密码输入框输入文本，点击登录按钮，Unity控制台窗口打印账号和密码内容，点击官网按钮，打开英雄联盟官网。</p>
+<p><img src="image-20200410144456902.png" alt="image-20200410144454523"></p>
+<h1 id="勾选框">勾选框</h1>
+<h2 id="单选">单选</h2>
+<p>给UserPanel添加UI|Toggle，编辑Toggle下的Label的Text组件|Text。</p>
+<p><img src="image-20200410171601814.png" alt="image-20200410171601814"></p>
+<p>选中Toggle下的Background，调整勾选框致合适大小，选中Background下的Checkmark，将其锚点设置为stretch-stretch。</p>
+<p><img src="image-20200410171834994.png" alt="image-20200410171834994"></p>
+<p>播放游戏，当Toggle被勾选上时，Toggle的Toggle组件下的Is On会被勾选</p>
+<p><img src="image-20200410172021614.png" alt="image-20200410172021614"></p>
+<p>修改我们的UserPanel.cs，添加一个Toggle类型变量toggle，Start方法添加获取Toggle语句。</p>
+<pre><code class="language-c#">    Toggle toggle;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        toggle = transform.Find(&quot;Toggle&quot;).GetComponent&lt;Toggle&gt;();
+</code></pre>
+<p>修改loginBtnOnClick方法如下。</p>
+<pre><code class="language-c#">private void loginBtnOnClick()
+{
+    if(toggle.isOn == true)
+    {
+        string account = userInput.text;
+        string pwd = pwdInput.text;
+        Debug.Log(&quot;账号是：&quot; + account);
+        Debug.Log(&quot;密码是：&quot; + pwd);
+    }
+    else
+    {
+        Debug.Log(&quot;请先同意用户隐私协议&quot;);
+    }
+
+}
+</code></pre>
+<p>播放游戏，当勾选框没有被勾选时，点击登录按钮，控制台不会打印我们输入的账号和密码。</p>
+<h2 id="多选一">多选一</h2>
+<p>我们复制三个Toggle，再新建一个空的GameObject，给空GameObject添加Toggle Group组件，同时选中前边的三个Toggle，将GameObject拽到Inspector的Toggle组件|Group下。</p>
+<p><img src="image-20200410173308051.png" alt="image-20200410173308051"></p>
+<p>播放游戏，这三个勾选框只允许勾选其中一个。</p>
+<p><img src="image-20200410173544673.png" alt="image-20200410173544673"></p>
+<h1 id="滑动条">滑动条</h1>
+<p>我们在Canvas下新建一个Panel，重命名为SettingPanel，设置其Image组件|Color为黑色，不透明度适当提高，使SettingPanel显示很暗。</p>
+<p>在SettingPanel下新建一个UI|Slider，我们可以对它的三个子项进行个性化设置，我在此只修改了大小和颜色。</p>
+<p><img src="image-20200410180311571.png" alt="image-20200410180311571"></p>
+<p>当我们播放游戏时，滑动Slider可以改变其Slider组件|Value的值</p>
+<p><img src="image-20200410180625592.png" alt="image-20200410180625592"></p>
+<p>要在脚本中获取滑动条的值，我们先创建一个SettingPanel.cs，编写代码如下：</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SettingPanel : MonoBehaviour
+{
+    Slider slider;
+    // Start is called before the first frame update
+    void Start()
+    {
+        slider = transform.Find(&quot;Slider&quot;).GetComponent&lt;Slider&gt;();
+        slider.onValueChanged.AddListener(OnValueChanged);     
+    }
+    void OnValueChanged(float value)
+    {
+        Debug.Log(&quot;当前滑动条的进度：&quot; + slider.value);
+    }
+}
+</code></pre>
+<p>然后将SettingPanel.cs作为组件添加到SettingPanel。播放游戏，当我们滑动Slider，控制台将实时打印Value的值。</p>
+<h1 id="滚动视图遮罩布局组件内容尺寸适配器">滚动视图、遮罩、布局组件、内容尺寸适配器</h1>
+<h2 id="滚动视图">滚动视图</h2>
+<p>给Canvas新建一个UI|Scrow View（滚动视图）,我们可以在Scrow View|Viewport|Content下放入要装的UI元素比如图片。</p>
+<p><img src="image-20200410213421959.png" alt="image-20200410213421959"></p>
+<p>Content是我们要填装UI元素的容器，单独选中Content改变其大小可以展示总面积。如上图，在其中放入Image后还需要适当调整Image的位置。</p>
+<p><img src="image-20200410214338872.png" alt="image-20200410214338872"></p>
+<p>Handle是滑条，要改变滑条背景需要在Scrollbar Horizontal/Vertical里设置。</p>
+<p><img src="image-20200410213852276.png" alt="image-20200410213852276"></p>
+<h2 id="遮罩">遮罩</h2>
+<p>在滚动视图的Viewport里有一个Mask组件，当我们取消勾选后，将显示被遮住的内容。</p>
+<p><img src="image-20200410214533455.png" alt="image-20200410214533455"></p>
+<p>我们给Panel新建一个Image，展示颜色为红色，选中Image再新建一个Image，设置颜色为黄色。调整黄色Image的大小使之盖过红色Image，当我们给父物体红色Image添加Mask组件后，子物体黄色Image超出部分会被父物体的遮罩覆盖。</p>
+<p><img src="image-20200410215829723.png" alt="image-20200410215829723"></p>
+<p><img src="image-20200410215921935.png" alt="image-20200410215921935"></p>
+<h2 id="水平垂直网格布局组件">水平/垂直/网格布局组件</h2>
+<p>给Content添加组件Horizontal/Vertical/Grid Layout Group，将使content内的UI元素全部呈水平/垂直排列，并做针对设置。下图给了一个垂直布局组件效果，同时我也在Padding处设置了边距</p>
+<p><img src="image-20200410221507116.png" alt="image-20200410221507116"></p>
+<h2 id="布局元素">布局元素</h2>
+<p>给Content下的UI元素比如Image添加Layout Element组件后，勾选Ignore Layout，该Image将不受其他三种布局组件影响，可以随意放置。</p>
+<p><img src="image-20200410222931803.png" alt="image-20200410222931803"></p>
+<h2 id="内容尺寸适配器">内容尺寸适配器</h2>
+<p>给Content添加组件Content Size Fitter，在Content Size Fitter|Vertical Fit选择Preferrd Size，Content的尺寸大小将根据内容布局自动调整。</p>
+<p><img src="image-20200411104056877.png" alt="image-20200411104056877"></p>
+<p>将Panel重命名为HeroPanel，将Content下第一个Image重命名做成预制体Hero，创建脚本HeroPanel.cs，编写代码如下：</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HeroPanel : MonoBehaviour
+{
+    public GameObject hero;
+    public Transform content;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject _hero = GameObject.Instantiate(hero);
+            _hero.transform.parent = content;
+        }
+    }
+}
+</code></pre>
+<p>将HeroPanel.cs添加到HeroPanel，将Hero预制体拖入HeroPanel组件|hero，将Content拖入HeroPanel组件|content。播放游戏，当我们删掉Content下大部分Image，然后鼠标在Game窗口里点击一下，按A键克隆Hero，选中Content我们可看到Content随着Hero的增加动态调节尺寸适应内容。</p>
+<p><img src="image-20200411105741808.png" alt="image-20200411105741808"></p>
+<p><img src="image-20200411105811893.png" alt="image-20200411105811893"></p>
+<p>内容尺寸适配器的另一种常见用法：</p>
+<p>给HeroPanel添加一个Text，给Text添加组件Content Size Fitter，Content Size Fitter下边两个属性全部设置为Preferrd Size。</p>
+<p><img src="image-20200411110920125.png" alt="image-20200411110920125"></p>
+<p>我们输入成段的文本，Content对根据包括换行回车在内的文本内容进行自适应。</p>
+<p><img src="image-20200411111028122.png" alt="image-20200411111028122"></p>
+<h1 id="矩形变换ui特效图片填充">矩形变换、UI特效、图片填充</h1>
+        </div>
+        
+        
+        
+
+
+        
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/c-sharp%E4%B8%8Emysql%E4%BA%A4%E4%BA%92/" class="block">C#与MySQL交互</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/c-sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/" class="block">C#委托与事件</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+
+    
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

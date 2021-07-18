@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>搭建博客 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Eureka is a elegant and powerful theme for Hugo.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Categories",
+      "item":"/categories/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"搭建博客",
+      "item":"/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"}]
+}
+</script>
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[{
+            "@type":"ListItem",
+            "position":  1 ,
+            "name": "Hexo搭建个人博客注意事项记录",
+            "description": "如何插入图片？ 安装hexo-asset-image插件\nnpm install hexo-asset-image --save  确保Hexo博客总目录下的_config.yml中的post_asset_folder的值为true（默认是false）。\n然后在要插入图片的文章的目录下新建一个同名文件夹，并在其中放入要插入的图片，例子：\nMacGesture2-Publish ├── apppicker.jpg ├── logo.jpg └── rules.jpg MacGesture2-Publish.md\n直接用语句![logo](logo.jpg)插入图片logo.jpg。\n\u0026mdash;2020-01-10 更新\u0026mdash;\n邮件链接格式 mailto:xxx@xxx.com  \u0026mdash;2020-01-14 更新\u0026mdash;\n.md文件名如果包含特殊字符，需要转义 例如，文件名“C#入坑与VS的使用.md”需要改成“C%23入坑与VS的使用.md”。否则点击文章标题进入页面时，发送一个get请求，参数包含“#”，结果无法成功进入文章页面。\n原理：将特殊的字符转换成ASCII码，格式为：%加字符的ASCII码，即一个百分号%，后面跟对应字符的ASCII（16进制）码值。例如 空格的编码值是\u0026quot;%20\u0026quot;。\nURL特殊符号及对应的十六进制值编码：\n+ URL中+号表示空格 %2B 空格 URL中的空格可以用+号或者编码 %20 / 分隔目录和子目录 %2F ? 分隔实际的 URL 和参数 %3F % 指定特殊字符 %25 # 表示书签 %23 \u0026amp; URL中指定的参数间的分隔符 %26 = URL中指定参数的值 %3D  参考链接：https://segmentfault.com/a/1190000010854567\n尽管这样做可以解决跳转的问题，但文章中的所有图片依旧无法显示，因此给md文件和存图片的文件夹取名应尽力避免夹带特殊符号。\ntags包含特殊字符“#”需要转义 例如，以“C#”为一个标签名，则应写成\ntags: C\u0026amp;#35;  原理：对特殊符号进行转义，用对应的HTML字符实体进行替换\n各种常用特殊字符对应的HTML字符实体：\n! \u0026amp;#33; — 惊叹号 Exclamation mark \u0026quot; \u0026amp;#34; \u0026amp;quot; — 双引号 Quotation mark # \u0026amp;#35; — 数字标志 Number sign $ \u0026amp;#36; — 美元标志 Dollar sign % \u0026amp;#37; — 百分号 Percent sign \u0026amp; \u0026amp;#38; \u0026amp;amp; — 与符号(\u0026amp;) Ampersand ' \u0026amp;#39; — 单引号 Apostrophe ( \u0026amp;#40; — 小括号左边部分 Left parenthesis ) \u0026amp;#41; — 小括号右边部分 Right parenthesis * \u0026amp;#42; — 星号 Asterisk + \u0026amp;#43; — 加号 Plus sign \u0026lt; \u0026amp;#60; \u0026amp;lt; 小于号 Less than = \u0026amp;#61; — 等于符号 Equals sign - \u0026amp;#45; \u0026amp;minus; — 减号 \u0026gt; \u0026amp;#62; \u0026amp;gt; — 大于号 Greater than ?",
+            "url": "/posts/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E8%AE%B0%E5%BD%95/"
+        }
+    ]
+}
+</script><meta property="og:title" content="搭建博客 | Eighthoursleep" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="og:updated_time" content="2019-03-20T02:56:44&#43;00:00" />
+
+
+
+<meta property="article:section" content="categories" />
+
+
+<link rel="alternate" type="application/rss+xml" href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.xml" title="Eighthoursleep" />
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+<article class="mx-6 my-8">
+    <h1 class="font-bold text-3xl text-primary-text">搭建博客</h1>
+    
+</article>
+<div class="bg-secondary-bg rounded px-6">
+    <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E8%AE%B0%E5%BD%95/" class="font-bold text-xl hover:text-eureka">Hexo搭建个人博客注意事项记录</a>
+</div>
+<div class="content">
+  如何插入图片？ 安装hexo-asset-image插件
+npm install hexo-asset-image --save  确保Hexo博客总目录下的_config.yml中的post_asset_folder的值为true（默认是false）。
+然后在要插入图片的文章的目录下新建一个同名文件夹，并在其中放入要插入的图片，例子：
+MacGesture2-Publish ├── apppicker.jpg ├── logo.jpg └── rules.jpg MacGesture2-Publish.md
+直接用语句![logo](logo.jpg)插入图片logo.jpg。
+—2020-01-10 更新—
+邮件链接格式 mailto:xxx@xxx.com  —2020-01-14 更新—
+.md文件名如果包含特殊字符，需要转义 例如，文件名“C#入坑与VS的使用.md”需要改成“C%23入坑与VS的使用.md”。否则点击文章标题进入页面时，发送一个get请求，参数包含“#”，结果无法成功进入文章页面。
+原理：将特殊的字符转换成ASCII码，格式为：%加字符的ASCII码，即一个百分号%，后面跟对应字符的ASCII（16进制）码值。例如 空格的编码值是&#34;%20&#34;。
+URL特殊符号及对应的十六进制值编码：
+&#43; URL中&#43;号表示空格 %2B 空格 URL中的空格可以用&#43;号或者编码 %20 / 分隔目录和子目录 %2F ? 分隔实际的 URL 和参数 %3F % 指定特殊字符 %25 # 表示书签 %23 &amp; URL中指定的参数间的分隔符 %26 = URL中指定参数的值 %3D  参考链接：https://segmentfault.com/a/1190000010854567
+尽管这样做可以解决跳转的问题，但文章中的所有图片依旧无法显示，因此给md文件和存图片的文件夹取名应尽力避免夹带特殊符号。
+tags包含特殊字符“#”需要转义 例如，以“C#”为一个标签名，则应写成
+tags: C&amp;#35;  原理：对特殊符号进行转义，用对应的HTML字符实体进行替换
+各种常用特殊字符对应的HTML字符实体：
+! &amp;#33; — 惊叹号 Exclamation mark &#34; &amp;#34; &amp;quot; — 双引号 Quotation mark # &amp;#35; — 数字标志 Number sign $ &amp;#36; — 美元标志 Dollar sign % &amp;#37; — 百分号 Percent sign &amp; &amp;#38; &amp;amp; — 与符号(&amp;) Ampersand &#39; &amp;#39; — 单引号 Apostrophe ( &amp;#40; — 小括号左边部分 Left parenthesis ) &amp;#41; — 小括号右边部分 Right parenthesis * &amp;#42; — 星号 Asterisk &#43; &amp;#43; — 加号 Plus sign &lt; &amp;#60; &amp;lt; 小于号 Less than = &amp;#61; — 等于符号 Equals sign - &amp;#45; &amp;minus; — 减号 &gt; &amp;#62; &amp;gt; — 大于号 Greater than ?
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-20</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="hover:text-eureka">搭建博客</a>
+        
+    </div>
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+</div>
+
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

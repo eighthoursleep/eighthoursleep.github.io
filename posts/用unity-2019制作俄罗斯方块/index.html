@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>用Unity 2019制作俄罗斯方块 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="版本：Unity 2019.3.4f1 Personal">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"用Unity 2019制作俄罗斯方块",
+      "item":"/posts/%E7%94%A8unity-2019%E5%88%B6%E4%BD%9C%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/%E7%94%A8unity-2019%E5%88%B6%E4%BD%9C%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"
+    },
+    "headline": "用Unity 2019制作俄罗斯方块 | Eighthoursleep","datePublished": "2020-04-09T21:26:00+00:00",
+    "dateModified": "2020-04-09T21:26:00+00:00",
+    "wordCount":  1142 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "\u003cp\u003e版本：Unity 2019.3.4f1 Personal\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="用Unity 2019制作俄罗斯方块 | Eighthoursleep" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/%E7%94%A8unity-2019%E5%88%B6%E4%BD%9C%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" />
+
+
+
+
+<meta property="og:description" content="版本：Unity 2019.3.4f1 Personal" />
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-04-09T21:26:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-04-09T21:26:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">用Unity 2019制作俄罗斯方块</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-04-09</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>6 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <p>版本：Unity 2019.3.4f1 Personal</p>
+<h1 id="脚本">脚本</h1>
+<pre><code class="language-c#">using DG.Tweening;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GameManager : MonoBehaviour
+{
+    enum GameState
+    {
+        Start,
+        Stop
+    }
+    GameState gameState = GameState.Stop;
+    public Button startGame;//开始游戏按钮
+    public Button stopGame;//停止游戏按钮
+    public Transform MaxPosx;//方块X轴可移动的最小位置，相当于地图边界
+    public Transform MinPosx;//X轴最小
+    public Transform MaxPosy;//Y轴最大
+    public Transform MinPosy;//Y轴最小
+    public Transform[,] map = new Transform[11, 15];//二维数组，方块信息存储起来
+    public GameObject[] shapes = new GameObject[7];//7种不同的形状
+    public Sprite[] sprites = new Sprite[7];//七种颜色的方块
+    public Sprite[] levelSprite = new Sprite[5];
+    Transform currentShape;//当前形状
+    Transform nextShape;//下一个形状
+    private Transform preview;//预览形状的父物体
+    private int level = 1;//等级
+    private int score = 0;//分数
+    private float initSpeed = 0.8f;//初始每次下降的时间
+    private Transform shapePool;//方块的父物体
+    public float spacing;//两个方块的间距
+    private Transform gameOver;//游戏结束图片
+    private Image levelImage;
+    private Text scoreText;//分数文本
+    private Text upgradeScoreText;//升级分数文本
+    private AudioSource audioSource;//音频源组件
+    public AudioClip[] audioClips;//音频剪辑的数组
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        preview = GameObject.Find(&quot;Preview&quot;).transform;
+        spacing = Mathf.Abs(GameObject.Find(&quot;Row/Block (1)&quot;).transform.position.x
+            - GameObject.Find(&quot;Row/Block (2)&quot;).transform.position.x);
+        shapePool = GameObject.Find(&quot;ShapePool&quot;).transform;
+        levelImage = GameObject.Find(&quot;Level&quot;).GetComponent&lt;Image&gt;();
+        gameOver = transform.Find(&quot;GameOver&quot;);
+        scoreText = GameObject.Find(&quot;ScoreText&quot;).GetComponent&lt;Text&gt;();
+        upgradeScoreText = GameObject.Find(&quot;UpgradeScoreText&quot;).GetComponent&lt;Text&gt;();
+        audioSource = transform.GetComponent&lt;AudioSource&gt;();
+        startGame.onClick.AddListener(StartGame);
+        stopGame.onClick.AddListener(StopGame);
+    }
+    /// &lt;summary&gt;
+    /// 停止游戏
+    /// &lt;/summary&gt;
+    private void StopGame()
+    {
+        if(gameState == GameState.Start)
+        {
+            gameState = GameState.Stop;
+            if(currentShape != null)
+            {//当前形状和下一块的形状不为空就销毁，等待下一局开始重新分配
+                Destroy(currentShape.gameObject);
+            }
+            if(nextShape != null)
+            {
+                Destroy(nextShape.gameObject);
+            }
+            for(int i = 0; i &lt; shapePool.childCount; i++)
+            {
+                Destroy(shapePool.GetChild(i).gameObject);
+            }
+            for(int i = 0; i &lt; map.GetLength(0); i++)
+            {
+                for(int j = 0; j &lt; map.GetLength(1); j++)
+                {
+                    map[i, j] = null;
+                }
+            }
+        }
+        //重置等级和积分
+        level = 1;
+        score = 0;
+        scoreText.text = &quot;当前积分：0&quot;;
+        upgradeScoreText.text = &quot;升级积分：100&quot;;
+        levelImage.sprite = levelSprite[0];
+        //显示游戏结束的画面
+        StartCoroutine(OpenGameOver());
+        
+    }
+    /// &lt;summary&gt;
+    /// 开始游戏
+    /// &lt;/summary&gt;
+    private void StartGame()
+    {
+        if(gameState == GameState.Stop)
+        {
+            level = 1;
+            score = 0;
+            scoreText.text = &quot;当前积分：0&quot;;
+            upgradeScoreText.text = &quot;升级积分：100&quot;;
+            gameState = GameState.Start;
+            gameOver.gameObject.SetActive(false);
+            //游戏开始时候的初始化工作
+
+            //生成不同形状的方块，开始游戏需要播放音频
+            SpawnShape();//生成形状
+            PlayAudio(3);//播放声音
+        }
+    }
+    /// &lt;summary&gt;
+    /// 消除方块
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;rowIndex&quot;&gt;&lt;/param&gt;
+    private void ClearShape(List&lt;int&gt; rowIndex)
+    {
+        bool isMove = true;
+        for(int i = 0; i &lt; rowIndex.Count; i++)
+        {
+            for(int j = 0; j &lt; map.GetLength(0); j++)
+            {
+                if(map[j, rowIndex[i]] != null)
+                {
+                    //对每个需要消除的格子进行消除
+                    Transform block = map[j, rowIndex[i]];
+                    map[j, rowIndex[i]] = null;
+                    block.GetComponent&lt;Image&gt;().DOFade(0, 0.2f)
+                        .SetLoops(4)
+                        .SetEase(Ease.Linear)
+                        .OnComplete(() =&gt; 
+                        {
+                            Destroy(block.gameObject);
+                            if (isMove)
+                            {
+                                isMove = false;
+                                MoveLines(rowIndex);
+                            }
+                        });
+                }
+            }
+        }
+    }
+    /// &lt;summary&gt;
+    /// 消除后移动剩余方块的方法，让他们到达应该在的位置
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;rowIndex&quot;&gt;&lt;/param&gt;
+    private void MoveLines(List&lt;int&gt; rowIndex)
+    {
+        for(int i = rowIndex[0];i &lt; map.GetLength(1) ; i++)
+        {
+            for(int j= 0;j &lt; map.GetLength(0); j++)
+            {
+                if(map[j,i] != null)
+                {
+                    int dropRow = GetDropRow(rowIndex,i);
+                    map[j, i - dropRow] = map[j, i];//将当前这个格子的数据存到要下降的那个格子去
+                    map[j, i] = null;
+                    map[j, i - dropRow].position -= new Vector3(0, dropRow * spacing, 0);
+                }
+            }
+        }
+        CheckGameState();
+    }
+    /// &lt;summary&gt;
+    /// 获取要消除多少行
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;rowIndex&quot;&gt;&lt;/param&gt;
+    /// &lt;param name=&quot;currentRow&quot;&gt;&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private int GetDropRow(List&lt;int&gt; rowIndex,int currentRow)
+    {
+        int dropRow = 0;
+        for(int i = 0; i &lt; rowIndex.Count; i++)
+        {
+            if(currentRow &gt; rowIndex[i])
+            {
+                dropRow++;
+            }
+        }
+        return dropRow;
+    }
+    /// &lt;summary&gt;
+    /// 检测游戏是否结束
+    /// &lt;/summary&gt;
+    private void CheckGameState()
+    {
+        for(int i = 0; i &lt; map.GetLength(0); i++)
+        {
+            if(map[i, map.GetLength(1)-1]!= null)
+            {
+                StopGame();
+                break;
+            }
+        }
+        if(gameState == GameState.Start)
+        {
+            SpawnShape();
+        }
+    }
+    /// &lt;summary&gt;
+    /// 保存地图数据，方块不能掉落后就保存进来
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;shape&quot;&gt;&lt;/param&gt;
+    public void SaveShape(Transform shape)
+    {
+        //保存地图数据
+        for(int i = 0; i &lt; shape.childCount; i++)
+        {
+            if (!shape.GetChild(i).CompareTag(&quot;ShapePivot&quot;))
+            {
+                Vector3 childPos = shape.GetChild(i).position;
+                int xIndex = (int)((childPos.x - MinPosx.position.x) / spacing);
+                int yIndex = (int)((childPos.y - MinPosy.position.y) / spacing);
+                //求出再地图内对应的格子
+                if(yIndex &lt; map.GetLength(1))
+                {
+                    map[xIndex, yIndex] = shape.GetChild(i);
+                }
+                else
+                {
+                    StopGame();
+                    return;
+                    //游戏结束
+                }
+            }
+        }
+        //检查是否需要消除
+        CheckClear();
+    }
+    /// &lt;summary&gt;
+    /// 方块消除检测
+    /// &lt;/summary&gt;
+    public void CheckClear()
+    {
+        //检查是否有需要消除的方块
+        List&lt;int&gt; rowIndex = new List&lt;int&gt;();
+        for (int i = 0; i &lt; map.GetLength(1); i++)
+        {
+            bool isClear = true;
+            for(int j = 0; j &lt; map.GetLength(0); j++)
+            {
+                if(map[j, i] == null)
+                {
+                    isClear = false;
+                    break;
+                }
+            }
+            if (isClear)
+            {
+                rowIndex.Add(i);
+            }
+        }
+        if (rowIndex.Count &gt;= 1)
+        {
+            ClearShape(rowIndex);//调用消除的方法
+            //积分增长与升级
+            score += rowIndex.Count * 10;//每消除一行加10分
+            if(score &gt; level * 100 &amp;&amp; level &lt; 5)
+            {
+                level += 1;
+                levelImage.sprite = levelSprite[level - 1];
+                if(level &lt; 5)
+                {
+                    upgradeScoreText.text = &quot;升级积分：&quot; + level * 100;
+                }
+                else
+                {
+                    upgradeScoreText.text = &quot;已经满级&quot;;
+                }
+            }
+            scoreText.text = &quot;当前积分：&quot; + score;
+            //播放消除的音效
+            PlayAudio(1);//播放声音
+        }
+        else
+        {//如果不需要消除，那么需要判断游戏是否结束，如果没有结束就要生成新的可控制方块
+            CheckGameState();
+        }
+    }
+    /// &lt;summary&gt;
+    /// 判断方块的位置是否合法，首先是否超出地图边界，然后判断是否有和其他方块重叠
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;shape&quot;&gt;&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public bool CheckPos(Transform shape)
+    {
+        for(int i = 0; i &lt; shape.childCount; i++)
+        {
+            if (shape.GetChild(i).CompareTag(&quot;ShapePivot&quot;) == false)
+            {
+                Vector3 childPos = shape.GetChild(i).position;
+                if(childPos.x &lt; MinPosx.position.x 
+                    || childPos.x &gt; MaxPosx.position.x
+                    || childPos.y &lt; MinPosy.position.y)
+                 //   || childPos.y &gt; MaxPosy.position.y)
+                {
+                    return false;
+                }
+                int xIndex = (int)((childPos.x - MinPosx.position.x) / spacing);
+                int yIndex = (int)((childPos.y - MinPosy.position.y) / spacing);
+                Debug.Log(&quot;对应的索引是：&quot; + xIndex + &quot;Y的索引&quot; + yIndex);
+                if(yIndex &lt; map.GetLength(1))
+                {//Y轴小于地图边界的时候再来计算它是否有重叠
+                    if(map[xIndex, yIndex] != null)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    /// &lt;summary&gt;
+    /// 生成方块的方法
+    /// &lt;/summary&gt;
+    public void SpawnShape()
+    {
+        if(gameState == GameState.Stop)
+        {
+            return;
+        }
+        int shapeIndex;//形状的索引
+        int colorIndex;//颜色的索引
+        if(nextShape == null)
+        {//游戏刚开始的时候，下一个形状会为空
+            //先随机生成颜色和形状的索引
+            shapeIndex = UnityEngine.Random.Range(0, shapes.Length);
+            colorIndex = UnityEngine.Random.Range(0, sprites.Length);
+            //克隆出随机到的形状和赋予对应的颜色
+            currentShape = GameObject.Instantiate(shapes[shapeIndex]).transform;
+            for(int i = 0; i &lt; currentShape.childCount; i++)
+            {
+                if (!currentShape.GetChild(i).CompareTag(&quot;ShapePivot&quot;))
+                {
+                    currentShape.GetChild(i).GetComponent&lt;Image&gt;().sprite = sprites[colorIndex];
+                }
+            }
+        }
+        else
+        {
+            currentShape = nextShape;
+        }
+        currentShape.gameObject.AddComponent&lt;ShapeControl&gt;().Init(initSpeed - level/10f, spacing);
+        shapeIndex = UnityEngine.Random.Range(0, shapes.Length);
+        colorIndex = UnityEngine.Random.Range(0, sprites.Length);
+        nextShape = GameObject.Instantiate(shapes[shapeIndex]).transform;
+        for (int i = 0; i &lt; currentShape.childCount; i++)
+        {
+            if (!currentShape.GetChild(i).CompareTag(&quot;ShapePivot&quot;))
+            {
+                currentShape.GetChild(i).GetComponent&lt;Image&gt;().sprite = sprites[colorIndex];
+            }
+        }
+        nextShape.SetParent(preview);
+        nextShape.localPosition = Vector3.zero;
+    }
+    /// &lt;summary&gt;
+    /// 开启游戏结束的图片，1秒后自动关闭
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private IEnumerator OpenGameOver()
+    {
+        gameOver.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        gameOver.gameObject.SetActive(false);
+    }
+    /// &lt;summary&gt;
+    /// 播放音效
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;index&quot;&gt;&lt;/param&gt;
+    public void PlayAudio(int index)
+    {
+        audioSource.clip = audioClips[index];
+        audioSource.Play();
+    }
+}
+</code></pre>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShapeControl : MonoBehaviour
+{
+    float speed; //下降速度，值越低下降越快
+    float spacing;//间距，每次下降移动的值
+    float mTimer;//计时
+    GameManager gameManager;
+    Transform mPivot;//方块旋转的中心
+    bool isStopDown = false;
+
+    public void Init(float speed,float spacing)
+    {
+        //初始化设置物体生成的位置和给一些变量赋值
+        gameManager = GameObject.Find(&quot;BG&quot;).GetComponent&lt;GameManager&gt;();
+        transform.SetParent(GameObject.Find(&quot;ShapePool&quot;).transform);
+        if(gameObject.name.Contains(&quot;Shape (3)&quot;))
+        {
+            transform.localPosition = new Vector2(-spacing / 2, 0);
+        }
+        else
+        {
+            transform.localPosition = Vector3.zero;
+        }
+        this.speed = speed;
+        this.spacing = spacing;
+        mPivot = transform.Find(&quot;Pivot&quot;);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (isStopDown)
+        {
+            return;
+        }
+        mTimer += Time.deltaTime;
+        if(mTimer &gt;= speed)
+        {
+            mTimer = 0;
+            //时间到了，方块向下移动一格
+            SetPositionOrRotate(new Vector3(0, -spacing, 0), 0);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            //按下左方向键，控制方块向左移动一格
+            SetPositionOrRotate(new Vector3(-spacing, 0, 0), 0);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            //按下右方向键，控制方块向右移动一格
+            SetPositionOrRotate(new Vector3(spacing, 0, 0), 0);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            //按上方向键，旋转方块
+            SetPositionOrRotate(new Vector3(0, 0, 0), 90);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            //按下向下方向键，加快移动速度
+            speed = speed / 2;
+        }     
+    }
+    /// &lt;summary&gt;
+    /// 设置这个形状的位置或者形状
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;pos&quot;&gt;移动位置&lt;/param&gt;
+    /// &lt;param name=&quot;rotate&quot;&gt;旋转角度&lt;/param&gt;
+    private void SetPositionOrRotate(Vector3 pos,float rotate)
+    {
+        if(isStopDown)
+        {
+            return;
+        }
+        if(pos != Vector3.zero)
+        {
+            transform.position += pos;
+            Debug.Log(transform.position);
+            if (gameManager.CheckPos(transform) == false)
+            {
+                transform.position -= pos;
+                if(pos.y != 0)
+                {
+                    isStopDown = true;
+                    gameManager.SaveShape(transform);
+                    Debug.Log(&quot;删除了脚本&quot;);
+                    Destroy(this);//删除自身这个脚本组件，不再接受控制了
+                }
+            }
+            else
+            {
+                //如果移动合法，根据左右移动或者向下移动播放不同的音效
+                if(pos.y != 0)
+                {
+                    gameManager.PlayAudio(0);//播放下落的音效
+                }
+                else
+                {
+                    gameManager.PlayAudio(2);//播放移动和旋转的音效
+                }
+            }          
+        }
+        if(rotate != 0)
+        {
+            transform.RotateAround(mPivot.position,Vector3.forward, rotate);
+            if(gameManager.CheckPos(transform) == false)
+            {
+                transform.RotateAround(mPivot.position, Vector3.forward, -rotate);
+            }
+            else
+            {
+                gameManager.PlayAudio(2);//播放移动和旋转的音效
+                //播放声音
+            }
+        }
+    }
+}
+</code></pre>
+        </div>
+        
+        
+        
+
+
+        
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/%E6%A0%B8%E5%BF%83c-sharp/" class="block">核心C#</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/c-sharp%E4%B8%8Emysql%E4%BA%A4%E4%BA%92/" class="block">C#与MySQL交互</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+
+    
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

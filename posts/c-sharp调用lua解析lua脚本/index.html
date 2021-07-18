@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>C#调用Lua：解析Lua脚本 | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Lua解析器、Lua文件加载重定向、Lua解析器管理器">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"C#调用Lua：解析Lua脚本",
+      "item":"/posts/c-sharp%E8%B0%83%E7%94%A8lua%E8%A7%A3%E6%9E%90lua%E8%84%9A%E6%9C%AC/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/c-sharp%E8%B0%83%E7%94%A8lua%E8%A7%A3%E6%9E%90lua%E8%84%9A%E6%9C%AC/"
+    },
+    "headline": "C#调用Lua：解析Lua脚本 | Eighthoursleep","datePublished": "2020-07-07T19:30:46+00:00",
+    "dateModified": "2020-07-07T19:30:46+00:00",
+    "wordCount":  407 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "\u003cp\u003eLua解析器、Lua文件加载重定向、Lua解析器管理器\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="C#调用Lua：解析Lua脚本 | Eighthoursleep" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E8%A7%A3%E6%9E%90lua%E8%84%9A%E6%9C%AC/" />
+
+
+
+
+<meta property="og:description" content="Lua解析器、Lua文件加载重定向、Lua解析器管理器" />
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-07-07T19:30:46&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-07-07T19:30:46&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="C Sharp" />
+
+<meta property="article:tag" content="Lua" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/xlua%E7%83%AD%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" />
+
+<meta property="og:see_also" content="/posts/lua%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" />
+
+<meta property="og:see_also" content="/posts/lua%E8%87%AA%E5%B8%A6%E5%BA%93/" />
+
+<meta property="og:see_also" content="/posts/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" />
+
+<meta property="og:see_also" content="/posts/c-sharp%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%89%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" />
+
+<meta property="og:see_also" content="/posts/c-sharp%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" />
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">C#调用Lua：解析Lua脚本</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-07-07</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>2 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/xlua/" class="hover:text-eureka">xLua</a>
+        
+    </div>
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <p>Lua解析器、Lua文件加载重定向、Lua解析器管理器</p>
+<h1 id="lua解析器">Lua解析器</h1>
+<p>在Assets/Scripts/CSharpCallLua下编写脚本，并作为组件添加到场景中任意物体上：</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XLua;//引用命名空间
+
+public class LuaExample : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Lua解析器，可以再Unity中执行Lua语句
+        LuaEnv env = new LuaEnv();
+        //执行Lua脚本
+        env.DoString(&quot;print('Hello, world !')&quot;);
+        //执行Lua脚本（多脚本执行，require关键字）
+        //默认寻找脚本的路径，是在Resources文件夹下
+        //估计是使用Resources.Load加载，因此*.lua文件无法识别，需要加上后缀.txt或.bytes
+        env.DoString(&quot;require('Main')&quot;);
+        //手动释放的对象，垃圾回收。帧更新中定时执行或者切换场景时执行
+        env.Tick();
+        //销毁Lua解析器
+        env.Dispose();
+    }
+}
+</code></pre>
+<p>在Assets/Resources下新建一个Lua脚本，并在后缀加上<code>.txt</code></p>
+<pre><code class="language-lua">print(&quot;第一个Unity调用的脚本程序&quot;)
+</code></pre>
+<ul>
+<li>引用xlua，<code>using XLua</code></li>
+<li>提供的方法：
+<ul>
+<li>DoString：传入要执行的Lua语句</li>
+<li>Tick：回收垃圾、一般定时执行</li>
+<li>Dispose：销毁</li>
+</ul>
+</li>
+<li>默认将Lua脚本放在<code>Resources</code>文件夹下，且加上后缀.txt才会被识别</li>
+</ul>
+<h1 id="lua文件加载重定向">Lua文件加载重定向</h1>
+<p>在Assets/Scripts/CSharpCallLua下修改脚本：</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using XLua;
+
+public class Loader : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        LuaEnv env = new LuaEnv();
+        //xLua提供了一个路径重定向的方法
+        //当我们执行Lua语言require时，相当于执行一个Lua脚本，自动执行传入的函数
+        env.AddLoader(MyCustomLoader);
+
+        env.DoString(&quot;require('MainLua')&quot;);
+    }
+    //自动执行
+    byte[] MyCustomLoader(ref string filePath)
+    {
+        //通过函数的逻辑加载Lua文件
+        //传入的参数是require执行的Lua脚本
+        string path = Application.dataPath + &quot;/Lua/&quot; + filePath + &quot;.lua&quot;;
+        Debug.Log(filePath);
+        //有路径就加载文件
+        //C#提供的文件读写类File
+        if (File.Exists(path))//判断文件是否存在
+        {
+            return File.ReadAllBytes(path);
+        }
+        else
+        {
+            Debug.Log(&quot;MyCustomLoader重定向失败，文件名为&quot; + filePath);
+        }
+        return null;
+    }
+}
+</code></pre>
+<p>在Assets/Lua下编写一个Lua脚本</p>
+<pre><code class="language-lua">print(&quot;hello there.&quot;)
+</code></pre>
+<h1 id="lua解析器管理器">Lua解析器管理器</h1>
+<p>将Assets/Lua下的MainLua.lua加上.txt后缀</p>
+<p>然后在Assets/CSharpCallLua下编写脚本：</p>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LuaMgrTest : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        LuaMgr.GetInstance().Init();
+        LuaMgr.GetInstance().DoLuaFile(&quot;MainLua&quot;);
+    }
+}
+</code></pre>
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using XLua;
+/// &lt;summary&gt;
+/// Lua管理器提供Lua解析器，保证解析器的唯一性
+/// &lt;/summary&gt;
+public class LuaMgr : BaseManager&lt;LuaMgr&gt;
+{
+    LuaEnv luaEnv;
+    /// &lt;summary&gt;
+    /// 获取Lua的_G
+    /// &lt;/summary&gt;
+    public LuaTable Global
+    {
+        get
+        {
+            return luaEnv.Global;
+        }
+    }
+    /// &lt;summary&gt;
+    /// 初始化
+    /// &lt;/summary&gt;
+    public void Init()
+    {
+        if (luaEnv != null)
+            return;
+        luaEnv = new LuaEnv();
+        //luaEnv.AddLoader(MyCustomLoader);
+        luaEnv.AddLoader(MyCustomABLoader);
+    }
+    //自动执行
+    private byte[] MyCustomLoader(ref string filePath)
+    {
+        string path = Application.dataPath
+            + &quot;/Lua/&quot; + filePath + &quot;.lua&quot;;
+        if (File.Exists(path))
+        {
+            return File.ReadAllBytes(path);
+        }
+        else
+        {
+            Debug.Log(&quot;MyCustomLoader重定向失败，文件名位&quot; + filePath);
+        }
+        return null;
+    }
+    //Lua脚本会放在AB包中
+    //最终我们会通过加载AB包再加载其中的Lua脚本资源并执行
+    //AB包中如果要加载文本，后缀还是有一定的限制，因为*.lua不能被识别
+    //打包时要把Lua文件后缀加上.txt
+    private byte[] MyCustomABLoader(ref string filePath)
+    {
+        /*
+        Debug.Log(&quot;进入AB包加载，重定向函数&quot;);
+        //从AB包中加载文件
+        //加载AB包
+        string path = Application.streamingAssetsPath + &quot;/lua&quot;;
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+
+        //加载Lua文件
+        TextAsset tx = ab.LoadAsset&lt;TextAsset&gt;(filePath + &quot;.lua&quot;);
+        //加载Lua文件里的byte数组
+        return tx.bytes;
+        */
+        //通过AB包管理其加载Lua脚本资源
+        TextAsset lua = ABMgr.GetInstance().LoadRes&lt;TextAsset&gt;(&quot;lua&quot;,filePath + &quot;.lua&quot;);
+        if (lua != null)
+            return lua.bytes;
+        else
+            Debug.Log(&quot;MyCustomABLoader重定向失败，文件名为：&quot; + filePath);
+        return null;
+    }
+    /// &lt;summary&gt;
+    /// 传入Lua脚本文件名
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;fileName&quot;&gt;Lua脚本文件名&lt;/param&gt;
+    public void DoLuaFile(string fileName)
+    {
+        string str = string.Format(&quot;require('{0}')&quot;, fileName);
+        DoString(str);
+    }
+    /// &lt;summary&gt;
+    /// 执行Lua语句
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;str&quot;&gt;&lt;/param&gt;
+    public void DoString(string str)
+    {
+        if (luaEnv == null)
+        {
+            Debug.Log(&quot;解析器未初始化&quot;);
+            return;
+        }
+        luaEnv.DoString(str);
+    }
+    /// &lt;summary&gt;
+    /// 释放垃圾
+    /// &lt;/summary&gt;
+    public void Tick()
+    {
+        if (luaEnv == null)
+        {
+            Debug.Log(&quot;解析器未初始化&quot;);
+            return;
+        }
+        luaEnv.Tick();
+    }
+    /// &lt;summary&gt;
+    /// 销毁解析器
+    /// &lt;/summary&gt;
+    public void Dispose()
+    {
+        if (luaEnv == null)
+        {
+            Debug.Log(&quot;解析器未初始化&quot;);
+            return;
+        }
+        luaEnv.Dispose();
+        luaEnv = null;
+    }
+}
+</code></pre>
+        </div>
+        
+        <div class="my-4">
+    
+    <a href="/tags/c-sharp/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#C Sharp</a>
+    
+    <a href="/tags/lua/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#Lua</a>
+    
+</div>
+        
+        
+        
+
+
+        
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/c-sharp%E8%B0%83%E7%94%A8lua%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96/" class="block">C#调用Lua：全局变量和全局函数的获取</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/xlua%E7%83%AD%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="block">xLua热更新解决方案</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+
+    
+    
+    <div
+        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded p-6">
+        <h2 class="text-lg font-semibold mb-4">See Also</h2>
+        <div class="content">
+            
+            <a href="/posts/xlua%E7%83%AD%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">xLua热更新解决方案</a>
+            <br />
+            
+            <a href="/posts/lua%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">Lua垃圾回收</a>
+            <br />
+            
+            <a href="/posts/lua%E8%87%AA%E5%B8%A6%E5%BA%93/">Lua自带库函数</a>
+            <br />
+            
+            <a href="/posts/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Lua面向对象</a>
+            <br />
+            
+            <a href="/posts/c-sharp%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%89%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">C#设计模式（三）单例模式</a>
+            <br />
+            
+            <a href="/posts/c-sharp%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BA%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">C#设计模式（二）面向对象设计原则</a>
+            <br />
+            
+        </div>
+    </div>
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>

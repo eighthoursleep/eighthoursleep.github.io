@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>Posts | Eighthoursleep</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.2" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Eureka is a elegant and powerful theme for Hugo.">
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[{
+            "@type":"ListItem",
+            "position":  1 ,
+            "name": "UE4蓝图 第1课",
+            "description": "主讲人：神经刀游戏工作室 https://www.bilibili.com/video/av33932971\n  创建项目（蓝图、第三人称模板）\n  下方【内容浏览器】右键新建\n “Player”文件夹（存放角色） “Map”文件夹（存放关卡） “Gameplay”文件夹（存放玩法）    Map文件夹下右键新建一个【关卡】\n  左边【模式】下，从【光照】拖拽出：\n 一个【定向光源】 一个【天空光源】  从【视觉效果】拖拽出一个【大气雾】\n从【基本】拖拽出一个【立方体】\n  右边【细节】里把立方体的位置归零（点击“回车符号按钮”）\n 键盘上按【W】切换到调整位置坐标系 按【E】切换到调整旋转角度坐标系 【R】切换到调整大小坐标系    把立方体调成一个供角色落脚的平台\n  从左边【基本】里拖拽出一个【玩家起始】\n  “GamePlay”文件夹下右键新建一个【蓝图类】，选择【Game Mode Base】\n  Player文件夹下右键新建：\n 一个【蓝图类】的【Character】，取名“APlayer”， 一个【蓝图类】的【Player Controller】，取名“APlayerController”    双击进入“APlayer”，\n 选中左边【组件】里的【Mesh】， 右边【细节】中【Mesh】下Skeletal Mesh选择\u0026quot;SK_Mannequin\u0026quot;, 【细节】中【变换】下的【旋转Z轴】改成“-90°“，【位置Z轴】改成”-92”  选中左边【组件】里的【CapsuleCoponent】，点击上方【添加组件】按钮，选择【SwingArm】\n在新添加的SwingArm组件下新建一个【Camera】\n把SwingArm垂直调节到与角色肩差不多同高度的位置\n编译，保存\n  点击工具栏的【编辑】，进入【项目设置】，进到左边【引擎】下的【输入】\n  在”Axis Mapping“下自定义添加一个“Moveforward”,\n 添加一个按键，选择【键盘W】，”Scale“设置为“1.0” 添加一个按键，选择【键盘S】，“Scale”设置为“-1.0”    进入“APlayerController”，在【事件图表】下，右键添加一个操作【坐标轴事件】“Moveforward”",
+            "url": "/posts/ue4%E8%93%9D%E5%9B%BE-%E7%AC%AC1%E8%AF%BE/"
+        },{
+            "@type":"ListItem",
+            "position":  2 ,
+            "name": "配置Git的SSH Key",
+            "description": "生成SSH并添加到GitHub\n回到你的git bash中，\n git config \u0026ndash;global user.name \u0026ldquo;yourname\u0026rdquo; git config \u0026ndash;global user.email \u0026ldquo;youremail\u0026rdquo;\n 这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。\n可以用以下两条，检查一下是否输对\n git config user.name git config user.email\n 然后创建SSH,一路回车\n ssh-keygen -t rsa -C \u0026ldquo;youremail\u0026rdquo;\n 这个时候它会告诉你已经生成了.ssh的文件夹。在你的电脑中找到这个文件夹。\nssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。\n而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key 把你的id_rsa.pub里面的信息复制进去\n作者：程序员黄小斜 链接：https://www.jianshu.com/p/5efd8c6eb3e9 来源：简书 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。",
+            "url": "/posts/%E9%85%8D%E7%BD%AEgit%E7%9A%84ssh-key/"
+        },{
+            "@type":"ListItem",
+            "position":  3 ,
+            "name": "【GDC】Platinum Games：Action Without Borders",
+            "description": "What is an Action Game?   A set of actions responding to output 一系列针对输出的动作\n Passive activity 被动行为  This sounds like the exact opposite of action      Activity based on prior (active) input\n Adventure/Horror games  This is opposite to the impression horror games give off      What are \u0026ldquo;action skills\u0026rdquo;?\n The player\u0026rsquo;s ability to deal with a given situation    Gameplay Systems  What are gameplay systems?",
+            "url": "/posts/gdcplatinum-gamesaction-without-borders/"
+        }
+    ]
+}
+</script><meta property="og:title" content="Posts | Eighthoursleep" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eighthoursleep" />
+
+
+
+
+
+
+<meta property="og:updated_time" content="2021-07-18T13:43:43&#43;08:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Eighthoursleep" />
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eighthoursleep</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+<article class="mx-6 my-8">
+    <h1 class="font-bold text-3xl text-primary-text">Posts</h1>
+    
+</article>
+<div class="bg-secondary-bg rounded px-6">
+    <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/ue4%E8%93%9D%E5%9B%BE-%E7%AC%AC1%E8%AF%BE/" class="font-bold text-xl hover:text-eureka">UE4蓝图 第1课</a>
+</div>
+<div class="content">
+  主讲人：神经刀游戏工作室 https://www.bilibili.com/video/av33932971
+  创建项目（蓝图、第三人称模板）
+  下方【内容浏览器】右键新建
+ “Player”文件夹（存放角色） “Map”文件夹（存放关卡） “Gameplay”文件夹（存放玩法）    Map文件夹下右键新建一个【关卡】
+  左边【模式】下，从【光照】拖拽出：
+ 一个【定向光源】 一个【天空光源】  从【视觉效果】拖拽出一个【大气雾】
+从【基本】拖拽出一个【立方体】
+  右边【细节】里把立方体的位置归零（点击“回车符号按钮”）
+ 键盘上按【W】切换到调整位置坐标系 按【E】切换到调整旋转角度坐标系 【R】切换到调整大小坐标系    把立方体调成一个供角色落脚的平台
+  从左边【基本】里拖拽出一个【玩家起始】
+  “GamePlay”文件夹下右键新建一个【蓝图类】，选择【Game Mode Base】
+  Player文件夹下右键新建：
+ 一个【蓝图类】的【Character】，取名“APlayer”， 一个【蓝图类】的【Player Controller】，取名“APlayerController”    双击进入“APlayer”，
+ 选中左边【组件】里的【Mesh】， 右边【细节】中【Mesh】下Skeletal Mesh选择&#34;SK_Mannequin&#34;, 【细节】中【变换】下的【旋转Z轴】改成“-90°“，【位置Z轴】改成”-92”  选中左边【组件】里的【CapsuleCoponent】，点击上方【添加组件】按钮，选择【SwingArm】
+在新添加的SwingArm组件下新建一个【Camera】
+把SwingArm垂直调节到与角色肩差不多同高度的位置
+编译，保存
+  点击工具栏的【编辑】，进入【项目设置】，进到左边【引擎】下的【输入】
+  在”Axis Mapping“下自定义添加一个“Moveforward”,
+ 添加一个按键，选择【键盘W】，”Scale“设置为“1.0” 添加一个按键，选择【键盘S】，“Scale”设置为“-1.0”    进入“APlayerController”，在【事件图表】下，右键添加一个操作【坐标轴事件】“Moveforward”
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-01-08</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/%E9%85%8D%E7%BD%AEgit%E7%9A%84ssh-key/" class="font-bold text-xl hover:text-eureka">配置Git的SSH Key</a>
+</div>
+<div class="content">
+  生成SSH并添加到GitHub
+回到你的git bash中，
+ git config –global user.name “yourname” git config –global user.email “youremail”
+ 这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。
+可以用以下两条，检查一下是否输对
+ git config user.name git config user.email
+ 然后创建SSH,一路回车
+ ssh-keygen -t rsa -C “youremail”
+ 这个时候它会告诉你已经生成了.ssh的文件夹。在你的电脑中找到这个文件夹。
+ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。
+而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key 把你的id_rsa.pub里面的信息复制进去
+作者：程序员黄小斜 链接：https://www.jianshu.com/p/5efd8c6eb3e9 来源：简书 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-01-08</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/gdcplatinum-gamesaction-without-borders/" class="font-bold text-xl hover:text-eureka">【GDC】Platinum Games：Action Without Borders</a>
+</div>
+<div class="content">
+  What is an Action Game?   A set of actions responding to output 一系列针对输出的动作
+ Passive activity 被动行为  This sounds like the exact opposite of action      Activity based on prior (active) input
+ Adventure/Horror games  This is opposite to the impression horror games give off      What are “action skills”?
+ The player’s ability to deal with a given situation    Gameplay Systems  What are gameplay systems?
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-01-08</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>3 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+</div>
+
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/35/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/34/" aria-label="Page 34" class="page-link" role="button">34</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/35/" aria-label="Page 35" class="page-link" role="button">35</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 36" class="page-link" role="button">36</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/37/" aria-label="Page 37" class="page-link" role="button">37</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/38/" aria-label="Page 38" class="page-link" role="button">38</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/37/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/42/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>
